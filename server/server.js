@@ -17,7 +17,7 @@ app.use(express.urlencoded({extended:false}));
  * Routes
  */
 
-app.get('/users', async function(req, res) {
+app.get('/api/user', async function(req, res) {
     try {
         const getUsersQuery = 'SELECT * FROM users';
         const usersQuery = await pool.query(getUsersQuery);

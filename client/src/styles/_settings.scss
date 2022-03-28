@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap");
+$font-1: "Manrope", sans-serif;
+
+$color-1: #1a3794;
+$color-2: salmon;
+$color-3: #4e6dd1;
+$white: rgb(255, 255, 255);
+$white-alt: rgba(156, 156, 156, 0.205);
+
+@mixin verticalCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+body {
+  background: $white-alt;
+  font-family: $font-1;
+  @include verticalCenter;
+}
+li {
+  list-style-type: none;
+}
