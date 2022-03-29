@@ -3,8 +3,8 @@ import SignInForm from "../components/SignInForm";
 import SignUpForm from "../components/SignUpForm";
 
 const Log = () => {
-  const [signUpModal, setSignUpModal] = useState(true);
-  const [signInModal, setSignInModal] = useState(false);
+  const [signUpModal, setSignUpModal] = useState(false);
+  const [signInModal, setSignInModal] = useState(true);
 
   const handleModals = (e) => {
     if (e.target.id === "register") {
@@ -17,7 +17,7 @@ const Log = () => {
   };
 
   return (
-    <div className="connection-form">
+    <div className="log-page">
       <div className="form-container">
         <ul>
           <li
