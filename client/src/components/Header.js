@@ -8,7 +8,7 @@ const Header = () => {
         <NavLink to="/">
           <li>
             <img
-              src="icon-left-font-monochrome-white.svg"
+              src="./assets/icon-left-font-monochrome-white.svg"
               className="logo"
               alt=""
             />

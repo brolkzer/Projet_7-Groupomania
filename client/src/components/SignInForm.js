@@ -12,7 +12,7 @@ const SignInForm = () => {
 
     axios({
       method: "post",
-      url: `${process.env.REACT_APP_API_URL}api/user/login`,
+      url: `${process.env.REACT_APP_API_URL}api/user/sign-in`,
       withCredentials: true,
       data: {
         email,
@@ -33,7 +33,7 @@ const SignInForm = () => {
   };
 
   return (
-    <form action="" onSubmit={handleLogin} id="sign-up-form">
+    <form action="" onSubmit={handleLogin} id="sign-in-form">
       <label htmlFor="email">Email</label>
       <br />
       <input

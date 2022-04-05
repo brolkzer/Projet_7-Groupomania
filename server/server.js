@@ -1,35 +1,44 @@
+const User = require("./models/User");
 const express = require("express");
-const dotenv = require("dotenv");
-dotenv.config({ path: ".env" });
-const PORT = process.env.PORT || "3001";
+const cors = require("cors");
+const { Sequelize, DataTypes } = require("sequelize");
+const path = require("path");
+const dotenv = require("dotenv").config({ path: "./.env" });
+const userRoutes = require("./routes/user.routes");
+
+/* Initialize DB Server */
+
+const sequelize = new Sequelize(
+  `${process.env.DB_NAME}`,
+  `${process.env.DB_USER}`,
+  `${process.env.DB_PASS}`,
+  {
+    host: `${process.env.DB_HOST}`,
+    dialect: `${process.env.DB_DIALECT}`,
+  }
+);
+
+/* Immediately Invoked Function Expression */
+
+(async () => {
+  try {
+    await sequelize.authenticate();
+    await User.sync({ alter: true });
+    console.log("Connection has been established successfully.");
+  } catch (error) {
+    console.error("Unable to connect to the database:", error);
+  }
+})();
+
+/* Initialize application server */
+
 const app = express();
-const pool = require("./database");
-
-/**
- * Middleware
- */
-
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+// app.use("/api/post", postRoutes);
+app.use("/api/user", userRoutes);
 
-/**
- * Routes
- */
-
-app.get("/api/user", async function (req, res) {
-  try {
-    const getUsersQuery = "SELECT * from users where (id=6)";
-    const usersQuery = await pool.query(getUsersQuery);
-    res.status(200).json(usersQuery);
-  } catch (err) {
-    res.status(400).send(err.message);
-  }
-});
-
-/**
- * Start listening
- */
-
-app.listen(PORT, () => {
-  console.log(`Listening for requests on port ${PORT}`);
+app.listen(3001, () => {
+  console.log("Server started");
 });
