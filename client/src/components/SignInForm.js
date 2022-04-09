@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 const SignInForm = () => {
   const [email, setEmail] = useState("");
@@ -7,28 +8,26 @@ const SignInForm = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    const emailError = document.querySelector(".email.error");
-    const passwordError = document.querySelector(".password.error");
+    const errorId = document.querySelector(".error.id");
 
     axios({
       method: "post",
-      url: `${process.env.REACT_APP_API_URL}api/user/sign-in`,
-      withCredentials: true,
+      url: `${process.env.REACT_APP_API_URL}/api/user/sign-in`,
       data: {
         email,
         password,
       },
     })
       .then((res) => {
-        if (res.data.errors) {
-          emailError.innerHTML = res.data.errors.email;
-          passwordError.innerHTML = res.data.errors.password;
-        } else {
-          window.location = "/";
-        }
+        Cookies.set("jwt", res.data.token, {
+          expires: 7,
+          sameSite: "none",
+          secure: true,
+        });
+        window.location = "/";
       })
-      .catch((err) => {
-        console.log(err);
+      .catch(() => {
+        errorId.innerHTML = "Indentifiants incorrects !";
       });
   };
 
@@ -43,7 +42,6 @@ const SignInForm = () => {
         onChange={(e) => setEmail(e.target.value)}
         value={email}
       />
-      <div className="email error"></div>
       <br />
       <label htmlFor="password">Mot de passe</label>
       <br />
@@ -54,8 +52,8 @@ const SignInForm = () => {
         onChange={(e) => setPassword(e.target.value)}
         value={password}
       />
-      <div className="password error"></div>
       <br />
+      <div className="error id"></div>
       <input type="submit" value="Se connecter" />
     </form>
   );
