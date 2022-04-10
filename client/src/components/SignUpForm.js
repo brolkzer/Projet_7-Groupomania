@@ -38,6 +38,8 @@ const SignUpForm = () => {
             lastNameError.innerHTML = res.data.errors.lastName;
             emailError.innerHTML = res.data.errors.email;
             passwordError.innerHTML = res.data.errors.password;
+          } else {
+            window.location = "/Log";
           }
         })
         .catch((err) => console.log(err));

@@ -1,21 +1,57 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Accueil from "./pages/Accueil";
 import Log from "./pages/Log";
 import Profil from "./pages/Profil";
 import Utilisateurs from "./pages/Utilisateurs";
+import { UidContext } from "./components/AppContext";
+import axios from "axios";
+import Cookies from "js-cookie";
+import { useDispatch } from "react-redux";
+import { getUser } from "./actions/user.actions";
 
 const App = () => {
+  const [uid, setUid] = useState(null);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const fetchToken = async () => {
+      const cookieValue = Cookies.get("jwt");
+      await axios({
+        method: "post",
+        url: `${process.env.REACT_APP_API_URL}/api/user/jwtid`,
+        data: {
+          token: cookieValue,
+        },
+      })
+        .then((res) => {
+          setUid(res.data.userId.data);
+        })
+        .catch((err) => console.log(err + " no token"));
+    };
+    fetchToken();
+
+    if (uid) dispatch(getUser(uid));
+  }, [uid]);
+
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="*" element={<Accueil />}></Route>
-        <Route path="/" element={<Accueil />}></Route>
-        <Route path="/Profil" element={<Profil />}></Route>
-        <Route path="/Utilisateurs" element={<Utilisateurs />}></Route>
-        <Route path="/Log" element={<Log />}></Route>
-      </Routes>
-    </BrowserRouter>
+    <UidContext.Provider value={uid}>
+      <BrowserRouter>
+        <Routes>
+          {uid ? (
+            <>
+              <Route path="*" element={<Accueil />}></Route>
+              <Route path="/" element={<Accueil />}></Route>
+              <Route path="/Profil" element={<Profil />}></Route>
+              <Route path="/Utilisateurs" element={<Utilisateurs />}></Route>
+              <Route path="/Log" element={<Accueil />}></Route>
+            </>
+          ) : (
+            <Route path="*" element={<Log />}></Route>
+          )}
+        </Routes>
+      </BrowserRouter>
+    </UidContext.Provider>
   );
 };
 

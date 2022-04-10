@@ -1,7 +1,22 @@
+import axios from "axios";
 import React from "react";
 import { NavLink } from "react-router-dom";
+import Cookies from "js-cookie";
 
 const Header = () => {
+  const removeCookie = (key) => {
+    Cookies.remove(key);
+  };
+  const logout = async () => {
+    await axios({
+      method: "get",
+      url: `${process.env.REACT_APP_API_URL}/api/user/logout`,
+    })
+      .then(() => removeCookie("jwt"))
+      .catch((err) => console.log(err));
+
+    window.location = "/";
+  };
   return (
     <div className="header">
       <ul>
@@ -15,7 +30,7 @@ const Header = () => {
           </li>
         </NavLink>
         <NavLink to="/">
-          <li>Se déconnecter</li>
+          <li onClick={logout}>Se déconnecter</li>
         </NavLink>
       </ul>
     </div>

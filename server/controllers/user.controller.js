@@ -47,7 +47,8 @@ module.exports.signIn = async (req, res) => {
                 userId: user[0].id,
                 token: jwt.sign(
                   { data: user[0].id },
-                  `${process.env.JWT_TOKEN}`
+                  `${process.env.JWT_TOKEN}`,
+                  { expiresIn: "24h" }
                 ),
               });
             }
@@ -72,4 +73,25 @@ module.exports.getOneUser = async (req, res) => {
   })
     .then((user) => res.status(200).json(user))
     .catch((err) => res.status(500).json({ err }));
+};
+
+module.exports.fetchToken = async (req, res) => {
+  const token = req.body.token;
+
+  if (!token) {
+    res.json({ error: "Vous ne vous êtes pas connecté" });
+  } else {
+    jwt.verify(token, `${process.env.JWT_TOKEN}`, async (err, userId) => {
+      if (err) {
+        res.send(400).json("pas de token");
+      } else {
+        res.status(200).json({ userId });
+      }
+    });
+  }
+};
+
+module.exports.logout = async (req, res) => {
+  res.cookie("jwt", "", { maxAge: 1 });
+  res.redirect("/");
 };
