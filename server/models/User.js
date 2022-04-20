@@ -18,9 +18,17 @@ const User = sequelize.define("User", {
   firstName: { type: DataTypes.STRING },
   lastName: { type: DataTypes.STRING },
   bio: { type: DataTypes.STRING, defaultValue: "" },
+  following: {
+    type: DataTypes.TEXT,
+    defaultValue: "",
+  },
+  followers: {
+    type: DataTypes.TEXT,
+    defaultValue: "",
+  },
   picture: {
-    type: DataTypes.BLOB,
-    defaultValue: "./assets/images/random_user",
+    type: DataTypes.STRING,
+    defaultValue: "./assets/random_user.png",
   },
 });
 

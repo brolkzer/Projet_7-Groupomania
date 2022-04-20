@@ -12,7 +12,9 @@ module.exports.signUp = async (req, res) => {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
       })
-        .then(() => res.status(200).json({ message: "Utilisateur enregistré" }))
+        .then(() =>
+          res.sendStatus(200).json({ message: "Utilisateur enregistré" })
+        )
         .catch((err) => res.status(500).json({ err }));
     })
     .catch((err) => res.status(500).json({ err }));
@@ -83,7 +85,7 @@ module.exports.fetchToken = async (req, res) => {
   } else {
     jwt.verify(token, `${process.env.JWT_TOKEN}`, async (err, userId) => {
       if (err) {
-        res.send(400).json("pas de token");
+        res.sendStatus(400).json("pas de token");
       } else {
         res.status(200).json({ userId });
       }
@@ -94,4 +96,26 @@ module.exports.fetchToken = async (req, res) => {
 module.exports.logout = async (req, res) => {
   res.cookie("jwt", "", { maxAge: 1 });
   res.redirect("/");
+};
+
+module.exports.followUser = async (req, res) => {
+  /**
+   * ajouter la condition
+   */
+  try {
+    const userFollowing = await User.findOne({ where: { id: req.params.id } });
+    userFollowing.following += req.body.idToFollow;
+    await userFollowing.save();
+
+    const userFollowed = await User.findOne({
+      where: { id: req.body.idToFollow },
+    });
+    userFollowed.followers += req.params.id;
+    await userFollowed.save();
+
+    return res.status(200).json("Utilisateur suivi");
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({ error: "something went wrong" + err });
+  }
 };

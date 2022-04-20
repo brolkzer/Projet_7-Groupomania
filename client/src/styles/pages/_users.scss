@@ -1,0 +1,48 @@
+.users-container {
+    margin: 2em auto;
+    
+    .user-card {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: $white;
+        border-radius: 10px;
+        margin: 0.5em auto;
+        width: min(100% - 250px, 1100px);
+        
+            .user-desc {
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                
+                margin: 0;
+                padding: 0;
+            }
+
+            .user-picture {
+                height: 110px;
+                width: 110px;
+                margin: 0 1em;
+            }
+
+            .user-infos {
+                display: flex;
+                flex-direction: column;
+
+                    .user-bio {
+                        display: flex;
+                        flex-wrap: wrap;
+                        width: 45ch;
+                    }
+
+                    .user-name {
+                        font-weight: 700;
+                        font-size: 1.4em;
+                    }
+            }
+
+            .user-follow {
+                margin: 0 0.5em;
+            }
+    }
+}

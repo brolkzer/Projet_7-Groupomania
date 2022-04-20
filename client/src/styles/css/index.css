@@ -8,7 +8,7 @@
 }
 
 body {
-  background: #cdcdcd;
+  background: rgb(205, 205, 205);
   font-family: "Manrope", sans-serif;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -25,8 +25,68 @@ li {
   list-style-type: none;
 }
 
+.users-container {
+  margin: 2em auto;
+}
+.users-container .user-card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  margin: 0.5em auto;
+  width: min(100% - 250px, 1100px);
+}
+.users-container .user-card .user-desc {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin: 0;
+  padding: 0;
+}
+.users-container .user-card .user-picture {
+  height: 110px;
+  width: 110px;
+  margin: 0 1em;
+}
+.users-container .user-card .user-infos {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.users-container .user-card .user-infos .user-bio {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 45ch;
+}
+.users-container .user-card .user-infos .user-name {
+  font-weight: 700;
+  font-size: 1.4em;
+}
+.users-container .user-card .user-follow {
+  margin: 0 0.5em;
+}
+
 .navigation {
-  background-color: white;
+  background-color: rgb(255, 255, 255);
 }
 .navigation ul {
   display: -webkit-box;
@@ -141,7 +201,7 @@ li {
       -ms-flex-align: center;
           align-items: center;
   border-radius: 45px;
-  background: #cdcdcd;
+  background: rgb(205, 205, 205);
   gap: 50px;
   padding: 15px;
 }
@@ -164,6 +224,16 @@ li {
 .log-page .form-container ul li:hover {
   cursor: pointer;
   background-color: #1a3794;
+}
+.log-page .form-container h1 {
+  font-size: 1.5em;
+  margin-bottom: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 20ch;
 }
 
 .connection-from {
@@ -190,7 +260,7 @@ li {
 }
 .connection-from ul li {
   background: salmon;
-  color: white;
+  color: rgb(255, 255, 255);
   width: 130px;
   padding: 10px 0;
   border-radius: 18px;
