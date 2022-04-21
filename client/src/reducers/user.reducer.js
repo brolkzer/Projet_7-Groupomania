@@ -7,9 +7,12 @@ export default function userReducer(state = initialState, action) {
     case GET_USER:
       return action.payload;
     case FOLLOW_USER:
+      const followsArray = [action.payload.idToFollow, ...state.following];
+      const followsString = followsArray.join("");
+
       return {
         ...state,
-        following: [action.payload.idToFollow, ...state.following],
+        following: followsString,
       };
     case UNFOLLOW_USER:
       return {

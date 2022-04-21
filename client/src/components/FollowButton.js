@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { followUser, unfollowUser } from "../actions/user.actions";
+import { getUsers } from "../actions/users.action";
 
 const FollowButton = ({ idToFollow }) => {
-  // console.log(idToFollow);
   const isEmpty = (value) => {
     return (
       value === undefined ||
@@ -18,8 +18,13 @@ const FollowButton = ({ idToFollow }) => {
   const dispatch = useDispatch();
 
   const handleFollow = () => {
-    dispatch(followUser(userData[0].id, idToFollow));
-    setIsFollowed(true);
+    dispatch(followUser(userData.id, idToFollow))
+      .then(() =>
+        dispatch(getUsers())
+          .then(() => setIsFollowed(true))
+          .catch((err) => console.log(err))
+      )
+      .catch((err) => console.log(err));
   };
 
   const handleUnfollow = () => {

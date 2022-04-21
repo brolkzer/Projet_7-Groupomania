@@ -9,7 +9,7 @@ export const getUser = (uid) => {
     return axios
       .get(`${process.env.REACT_APP_API_URL}/api/user/${uid}`)
       .then((res) => {
-        dispatch({ type: GET_USER, payload: res.data });
+        dispatch({ type: GET_USER, payload: res.data[0] });
       })
       .catch((err) => console.log(err));
   };
@@ -22,7 +22,7 @@ export const followUser = (followerId, idToFollow) => {
       url: `${process.env.REACT_APP_API_URL}/api/user/follow/${followerId}`,
       data: { idToFollow },
     })
-      .then((res) => {
+      .then(() => {
         dispatch({ type: FOLLOW_USER, payload: { idToFollow } });
       })
       .catch((err) => console.log(err));
