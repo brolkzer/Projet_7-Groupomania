@@ -113,9 +113,58 @@ module.exports.followUser = async (req, res) => {
     userFollowed.followers += req.params.id;
     await userFollowed.save();
 
-    return res.status(200).json("Utilisateur suivi");
+    return res
+      .status(200)
+      .json(
+        "Vous suivez désormais l'utilisateur " +
+          userFollowed.firstName +
+          " " +
+          userFollowed.lastName
+      );
   } catch (err) {
     console.log(err);
-    return res.status(500).json({ error: "something went wrong" + err });
+    return res
+      .status(500)
+      .json({ error: "Erreur lors de la tentative de follow" + err });
+  }
+};
+
+module.exports.unfollowUser = async (req, res) => {
+  try {
+    const userUnfollowing = await User.findOne({
+      where: { id: req.params.id },
+    });
+    const userUnfollowingArray = userUnfollowing.following.match(/.{1,32}/g);
+    const userUnfollowingArrayFiltered = userUnfollowingArray.filter(
+      (id) => id != req.body.idToFollow
+    );
+    const userUnfollowingStrings = userUnfollowingArrayFiltered.join("");
+    userUnfollowing.following = userUnfollowingStrings;
+    await userUnfollowing.save();
+
+    const userUnfollowed = await User.findOne({
+      where: { id: req.body.idToFollow },
+    });
+    const userUnfollowedArray = userUnfollowed.followers.match(/.{1,32}/g);
+    const userUnfollowedArrayFiltered = userUnfollowedArray.filter(
+      (id) => id != req.params.id
+    );
+    const userUnfollowedStrings = userUnfollowedArrayFiltered.join("");
+    userUnfollowed.followers = userUnfollowedStrings;
+    await userUnfollowed.save();
+
+    return res
+      .status(200)
+      .json(
+        "Vous ne suivez plus l'utilisateur " +
+          userUnfollowed.firstName +
+          " " +
+          userUnfollowed.lastName
+      );
+  } catch (err) {
+    console.log(err);
+    return res
+      .status(500)
+      .json({ error: "Erreur lors de la tentative d'unfollow" + err });
   }
 };

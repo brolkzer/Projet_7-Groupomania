@@ -28,8 +28,13 @@ const FollowButton = ({ idToFollow }) => {
   };
 
   const handleUnfollow = () => {
-    dispatch(unfollowUser(userData.id, idToFollow));
-    setIsFollowed(false);
+    dispatch(unfollowUser(userData.id, idToFollow))
+      .then(() =>
+        dispatch(getUsers())
+          .then(() => setIsFollowed(false))
+          .catch((err) => console.log(err))
+      )
+      .catch((err) => console.log(err));
   };
 
   useEffect(() => {

@@ -29,15 +29,15 @@ export const followUser = (followerId, idToFollow) => {
   };
 };
 
-export const unfollowUser = (followerId, idToUnfollow) => {
+export const unfollowUser = (followerId, idToFollow) => {
   return (dispatch) => {
     return axios({
       method: "patch",
       url: `${process.env.REACT_APP_API_URL}/api/user/unfollow/${followerId}`,
-      data: { idToUnfollow },
+      data: { idToFollow },
     })
       .then((res) => {
-        dispatch({ type: UNFOLLOW_USER, payload: { idToUnfollow } });
+        dispatch({ type: UNFOLLOW_USER, payload: { idToFollow } });
       })
       .catch((err) => console.log(err));
   };
