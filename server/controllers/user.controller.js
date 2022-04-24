@@ -99,9 +99,6 @@ module.exports.logout = async (req, res) => {
 };
 
 module.exports.followUser = async (req, res) => {
-  /**
-   * ajouter la condition
-   */
   try {
     const userFollowing = await User.findOne({ where: { id: req.params.id } });
     userFollowing.following += req.body.idToFollow;

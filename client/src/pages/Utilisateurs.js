@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUsers } from "../actions/users.action";
-import usersReducer from "../reducers/users.reducer";
 import Header from "../components/Header";
 import Navigation from "../components/Navigation";
 import UserCard from "../components/UserCard";
@@ -19,6 +18,7 @@ const Utilisateurs = () => {
   const [loadUsers, setLoadUsers] = useState(true);
   const dispatch = useDispatch();
   const usersData = useSelector((state) => state.usersReducer);
+  const userDatas = useSelector((state) => state.userReducer);
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -37,11 +37,13 @@ const Utilisateurs = () => {
       <div className="users-container">
         <ul>
           {isEmpty(usersData) ? (
-            <li>yo</li>
+            <li>Chargement...</li>
           ) : (
-            usersData.map((userData) => {
-              return <UserCard userData={userData} key={userData.id} />;
-            })
+            usersData
+              .filter((user) => user.id != userDatas.id)
+              .map((userData) => {
+                return <UserCard userData={userData} key={userData.id} />;
+              })
           )}
         </ul>
       </div>

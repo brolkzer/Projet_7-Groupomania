@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import React from "react";
 import FollowButton from "./FollowButton";
 
 const UserCard = ({ userData }) => {
-  // console.log(userData.id);
   return (
     <>
       <li className="user-card" key={userData.id}>
@@ -26,8 +24,8 @@ const UserCard = ({ userData }) => {
             <p className="user-bio">{userData.bio}</p>
           </div>
         </div>
-        <div className="user-follow">
-          <FollowButton idToFollow={userData.id} />{" "}
+        <div className="user-follow" id={userData.id}>
+          <FollowButton idToFollow={userData.id} />
         </div>
       </li>
       <br />

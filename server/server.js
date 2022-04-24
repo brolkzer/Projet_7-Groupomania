@@ -1,7 +1,7 @@
 const User = require("./models/User");
 const express = require("express");
 const cors = require("cors");
-const { Sequelize, DataTypes } = require("sequelize");
+const { Sequelize } = require("sequelize");
 const path = require("path");
 const dotenv = require("dotenv").config({ path: "./.env" });
 const userRoutes = require("./routes/user.routes");
@@ -41,8 +41,13 @@ app.use(
 );
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-// app.use("/api/post", postRoutes);
+app.use(
+  "/upload",
+  express.static(path.join(__dirname, "assets/images")),
+  userRoutes
+);
 app.use("/api/user", userRoutes);
+// app.use("/api/post", postRoutes);
 
 app.listen(3001, () => {
   console.log("Server started");
