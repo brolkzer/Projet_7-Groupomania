@@ -1,34 +1,40 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import FollowButton from "./FollowButton";
 
-const UserCard = ({ userData }) => {
+const UserCard = ({ user }) => {
+  const userData = useSelector((state) => state.userReducer);
+
   return (
     <>
-      <li className="user-card" key={userData.id}>
-        <div className="user-desc">
-          <img
-            src={userData.picture}
-            alt={
-              "Photo de l'utilisateur:" +
-              " " +
-              userData.firstName +
-              " " +
-              userData.lastName
-            }
-            className="user-picture"
-          />
-          <div className="user-infos">
-            <p className="user-name">
-              {userData.firstName} {userData.lastName}
-            </p>
-            <p className="user-bio">{userData.bio}</p>
-          </div>
-        </div>
-        <div className="user-follow" id={userData.id}>
-          <FollowButton idToFollow={userData.id} />
-        </div>
-      </li>
-      <br />
+      {user.id != userData.id && (
+        <>
+          <li className="user-card" key={user.id}>
+            <div className="user-desc">
+              <img
+                src={user.picture}
+                alt={
+                  "Photo de l'utilisateur:" +
+                  " " +
+                  user.firstName +
+                  " " +
+                  user.lastName
+                }
+                className="user-picture"
+              />
+              <div className="user-infos">
+                <p className="user-name">
+                  {user.firstName} {user.lastName}
+                </p>
+                <p className="user-bio">{user.bio}</p>
+              </div>
+            </div>
+            <div className="user-follow" id={user.id}>
+              <FollowButton idToFollow={user.id} />
+            </div>
+          </li>
+        </>
+      )}
     </>
   );
 };

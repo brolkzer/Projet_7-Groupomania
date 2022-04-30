@@ -2,7 +2,7 @@ const User = require("../models/User");
 
 module.exports.uploadProfil = async (req, res) => {
   try {
-    const userUpload = await User.findOne({ where: { id: req.body.id } });
+    const userUpload = await User.findOne({ where: { id: req.params.id } });
     userUpload.picture = `./assets/profil/${req.file.filename}`;
     await userUpload.save();
 

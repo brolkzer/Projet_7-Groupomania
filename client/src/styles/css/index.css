@@ -38,9 +38,167 @@ li {
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
-.page-profil .user-desc .user-left-container > img {
-  height: 20vh;
+.page-profil .user-desc .user-global-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+.page-profil .user-desc .user-global-container .user-left-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 30px 0;
+}
+.page-profil .user-desc .user-global-container .user-left-container > img {
+  height: 250px;
   width: 250px;
+  border-radius: 50%;
+}
+.page-profil .user-desc .user-global-container .user-left-container form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 20px;
+}
+.page-profil .user-desc .user-global-container .user-left-container form label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 200px;
+  padding: 10px;
+  cursor: pointer;
+  background-color: #1a3794;
+  border-radius: 10px;
+  color: rgb(255, 255, 255);
+}
+.page-profil .user-desc .user-global-container .user-left-container form input[type=file] {
+  display: none;
+}
+.page-profil .user-desc .user-global-container .user-left-container form input[type=submit] {
+  width: 200px;
+  padding: 10px;
+  cursor: pointer;
+  background-color: #4e6dd1;
+  border-radius: 10px;
+  border: #4e6dd1 solid 1px;
+  font-family: "Manrope", sans-serif;
+  color: rgb(255, 255, 255);
+  font-size: 16px;
+}
+.page-profil .user-desc .user-global-container .user-left-container form input[type=submit]:hover {
+  background-color: #1a3794;
+  border: #1a3794 solid 1px;
+}
+.page-profil .user-desc .user-global-container .user-right-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 30px 0;
+}
+.page-profil .user-desc .user-global-container .user-right-container .bio-update h1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+.page-profil .user-desc .user-global-container .user-right-container .popup-profil-container .modal {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  -webkit-transform: translate(-100%);
+          transform: translate(-100%);
+  background: salmon;
+  padding: 25px;
+  border-radius: 20px;
+  -webkit-box-shadow: 0 0 2px rgba(131, 130, 130, 0.356);
+          box-shadow: 0 0 2px rgba(131, 130, 130, 0.356);
+  overflow: auto;
+  -webkit-transform: scaleY(0);
+          transform: scaleY(0);
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  -webkit-animation: modal 0.5s forwards;
+          animation: modal 0.5s forwards;
+}
+.page-profil .user-desc .user-global-container .user-right-container .popup-profil-container .modal p {
+  min-width: 200px;
+}
+@-webkit-keyframes modal {
+  to {
+    -webkit-transform: scale(1) translate(-50%);
+            transform: scale(1) translate(-50%);
+  }
+}
+@keyframes modal {
+  to {
+    -webkit-transform: scale(1) translate(-50%);
+            transform: scale(1) translate(-50%);
+  }
+}
+.page-profil .user-desc .user-global-container .user-right-container .popup-profil-container .modal .cross {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+  cursor: pointer;
+}
+.page-profil .user-desc .user-global-container .user-right-container .popup-profil-container .modal .cross:hover {
+  -webkit-transform: scale(1.07);
+          transform: scale(1.07);
 }
 
 .users-container {
@@ -187,6 +345,112 @@ li {
 }
 .header ul a:visited {
   color: white;
+}
+
+.main .thread-container {
+  padding: 3vh;
+}
+.main .thread-container .card-container {
+  display: grid;
+  grid-template-columns: 66px 1fr;
+  border: 2px solid #4e6dd1;
+  background-color: rgb(255, 255, 255);
+  margin: 10px;
+  padding: 16px;
+  border-radius: 20px;
+  margin: 8px auto;
+  position: relative;
+  min-height: 100px;
+}
+.main .thread-container .card-container .card-left img {
+  height: 52px;
+  width: 52px;
+  border-radius: 20px;
+  -webkit-box-shadow: 1px 1px 3px rgba(51, 51, 51, 0.192);
+          box-shadow: 1px 1px 3px rgba(51, 51, 51, 0.192);
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+@media screen and (max-width: 590px) {
+  .main .thread-container .card-container .card-left img {
+    height: 40px;
+    width: 40px;
+    margin-left: 18px;
+    border-radius: 14px;
+  }
+}
+@media screen and (max-width: 590px) {
+  .main .thread-container .card-container .card-left {
+    position: absolute;
+    -webkit-transform: translate(17px, 18px);
+            transform: translate(17px, 18px);
+  }
+}
+.main .thread-container .card-container .card-right .card-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.main .thread-container .card-container .card-right .card-header span {
+  font-style: italic;
+}
+.main .thread-container .card-container .card-right .card-header .pseudo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  gap: 10px;
+}
+.main .thread-container .card-container .card-right p {
+  margin: 1rem 0;
+}
+.main .thread-container .card-container .card-right .card-footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 12px 0 4px;
+}
+.main .thread-container .card-container .card-right .card-footer img {
+  height: 22px;
+  width: 22px;
+  cursor: pointer;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+.main .thread-container .card-container .card-right .card-footer img:hover {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+.main .thread-container .card-container .card-right .card-footer .comment-icon,
+.main .thread-container .card-container .card-right .card-footer .like-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-right: 2rem;
+}
+.main .thread-container .card-container .card-right .card-footer .comment-icon span,
+.main .thread-container .card-container .card-right .card-footer .like-container span {
+  font-size: 1.02rem;
+  position: absolute;
+  -webkit-transform: translate(29px, 2px);
+          transform: translate(29px, 2px);
 }
 
 .log-page {

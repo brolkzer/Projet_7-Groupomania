@@ -2,17 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { followUser, unfollowUser } from "../actions/user.actions";
 import { getUsers } from "../actions/users.action";
+import { isEmpty } from "./Utils";
 
 const FollowButton = ({ idToFollow }) => {
-  const isEmpty = (value) => {
-    return (
-      value === undefined ||
-      value === null ||
-      (typeof value === "object" && Object.keys(value).length === 0) ||
-      (typeof value === "string" && value.trim().length === 0)
-    );
-  };
-
   const userData = useSelector((state) => state.userReducer);
   const [isFollowed, setIsFollowed] = useState(false);
   const dispatch = useDispatch();

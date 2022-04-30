@@ -119,7 +119,6 @@ module.exports.followUser = async (req, res) => {
           userFollowed.lastName
       );
   } catch (err) {
-    console.log(err);
     return res
       .status(500)
       .json({ error: "Erreur lors de la tentative de follow" + err });
@@ -163,5 +162,21 @@ module.exports.unfollowUser = async (req, res) => {
     return res
       .status(500)
       .json({ error: "Erreur lors de la tentative d'unfollow" + err });
+  }
+};
+
+module.exports.updateBio = async (req, res) => {
+  try {
+    const userUpdateBio = await User.findOne({
+      where: { id: req.params.id },
+    });
+    userUpdateBio.bio = req.body.bio;
+    await userUpdateBio.save();
+
+    return res.status(200).json("Votre bio a bien été modifiée");
+  } catch (err) {
+    console.log(
+      "Erreur lors de la tentative de modification de votre bio" + err
+    );
   }
 };

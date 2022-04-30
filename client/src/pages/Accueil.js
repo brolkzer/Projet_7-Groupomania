@@ -1,13 +1,16 @@
 import React from "react";
 import Header from "../components/Header";
 import Navigation from "../components/Navigation";
+import Thread from "../components/Thread";
 
 const Accueil = () => {
   return (
     <>
       <Header />
       <Navigation />
-      <div></div>
+      <div className="main">
+        <Thread />
+      </div>
     </>
   );
 };

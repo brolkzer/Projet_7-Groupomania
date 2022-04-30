@@ -4,6 +4,7 @@ export const GET_USER = "GET_USER";
 export const FOLLOW_USER = "FOLLOW_USER";
 export const UNFOLLOW_USER = "UNFOLLOW_USER";
 export const UPLOAD_PICTURE = "UPLOAD_PICTURE";
+export const UPDATE_BIO = "UPDATE_BIO";
 
 export const getUser = (uid) => {
   return (dispatch) => {
@@ -48,7 +49,29 @@ export const uploadPicture = (data, id) => {
   return (dispatch) => {
     return axios
       .post(`${process.env.REACT_APP_API_URL}/upload/${id}`, data)
-      .then((res) => res.status(200).json(res))
-      .catch((err) => res.status(500).json(err));
+      .then((res) => {
+        res.status(200).json("post réussi");
+        return axios
+          .get(`${process.env.REACT_APP_API_URL}/api/user/${id}`)
+          .then((res) =>
+            dispatch({ type: UPLOAD_PICTURE, payload: res.data.picture })
+          )
+          .catch((err) => console.log(err));
+      })
+      .catch((err) => console.log(err));
+  };
+};
+
+export const updateBio = (id, bio) => {
+  return (dispatch) => {
+    return axios({
+      method: "patch",
+      url: `${process.env.REACT_APP_API_URL}/api/user/bio/${id}`,
+      data: { bio },
+    })
+      .then((res) => {
+        dispatch({ type: UPDATE_BIO, payload: bio });
+      })
+      .catch((err) => console.log(err));
   };
 };

@@ -18,7 +18,7 @@ const Utilisateurs = () => {
   const [loadUsers, setLoadUsers] = useState(true);
   const dispatch = useDispatch();
   const usersData = useSelector((state) => state.usersReducer);
-  const userDatas = useSelector((state) => state.userReducer);
+  const userData = useSelector((state) => state.userReducer);
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -39,11 +39,9 @@ const Utilisateurs = () => {
           {isEmpty(usersData) ? (
             <li>Chargement...</li>
           ) : (
-            usersData
-              .filter((user) => user.id != userDatas.id)
-              .map((userData) => {
-                return <UserCard userData={userData} key={userData.id} />;
-              })
+            usersData.map((user) => {
+              return <UserCard user={user} key={user.id} />;
+            })
           )}
         </ul>
       </div>

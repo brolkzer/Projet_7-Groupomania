@@ -1,10 +1,13 @@
 const User = require("./models/User");
+const Post = require("./models/Post");
 const express = require("express");
 const cors = require("cors");
+const helmet = require("helmet");
 const { Sequelize } = require("sequelize");
 const path = require("path");
 const dotenv = require("dotenv").config({ path: "./.env" });
 const userRoutes = require("./routes/user.routes");
+const postRoutes = require("./routes/post.routes");
 
 /* Initialize DB Server */
 
@@ -24,6 +27,7 @@ const sequelize = new Sequelize(
   try {
     await sequelize.authenticate();
     await User.sync({ alter: true });
+    await Post.sync({ alter: true });
     console.log("Connection has been established successfully.");
   } catch (error) {
     console.error("Unable to connect to the database:", error);
@@ -33,6 +37,7 @@ const sequelize = new Sequelize(
 /* Initialize application server */
 
 const app = express();
+app.use(helmet.frameguard({ action: "SAMEORIGIN" }));
 app.use(
   cors({
     origin: "*",
@@ -47,7 +52,7 @@ app.use(
   userRoutes
 );
 app.use("/api/user", userRoutes);
-// app.use("/api/post", postRoutes);
+app.use("/api/post", postRoutes);
 
 app.listen(3001, () => {
   console.log("Server started");
