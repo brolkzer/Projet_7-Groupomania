@@ -12,7 +12,10 @@ export const getPosts = (num) => {
       .get(`${process.env.REACT_APP_API_URL}/api/post`)
       .then((res) => {
         const slicedPostArray = res.data.slice(0, num);
-        dispatch({ type: GET_POSTS, payload: slicedPostArray });
+        dispatch({
+          type: GET_POSTS,
+          payload: slicedPostArray,
+        });
       })
       .catch((err) => console.log(err));
   };

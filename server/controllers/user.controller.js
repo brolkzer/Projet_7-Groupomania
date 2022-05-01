@@ -12,12 +12,10 @@ module.exports.signUp = async (req, res) => {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
       })
-        .then(() =>
-          res.sendStatus(200).json({ message: "Utilisateur enregistré" })
-        )
-        .catch((err) => res.status(500).json({ err }));
+        .then(() => res.status(200).json({ message: "Utilisateur enregistré" }))
+        .catch((err) => res.status(500).json(err));
     })
-    .catch((err) => res.status(500).json({ err }));
+    .catch((err) => console.log(err));
 };
 
 module.exports.signIn = async (req, res) => {
@@ -130,7 +128,7 @@ module.exports.unfollowUser = async (req, res) => {
     const userUnfollowing = await User.findOne({
       where: { id: req.params.id },
     });
-    const userUnfollowingArray = userUnfollowing.following.match(/.{1,32}/g);
+    const userUnfollowingArray = userUnfollowing.following.match(/.{1,36}/g);
     const userUnfollowingArrayFiltered = userUnfollowingArray.filter(
       (id) => id != req.body.idToFollow
     );
@@ -141,7 +139,7 @@ module.exports.unfollowUser = async (req, res) => {
     const userUnfollowed = await User.findOne({
       where: { id: req.body.idToFollow },
     });
-    const userUnfollowedArray = userUnfollowed.followers.match(/.{1,32}/g);
+    const userUnfollowedArray = userUnfollowed.followers.match(/.{1,36}/g);
     const userUnfollowedArrayFiltered = userUnfollowedArray.filter(
       (id) => id != req.params.id
     );

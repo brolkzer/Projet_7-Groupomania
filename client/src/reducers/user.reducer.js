@@ -21,7 +21,7 @@ export default function userReducer(state = initialState, action) {
         following: followsStrings,
       };
     case UNFOLLOW_USER:
-      const followArray = state.following.match(/.{1,32}/g);
+      const followArray = state.following.match(/.{1,36}/g);
       const followFiltering = followArray.filter(
         (id) => id != action.payload.idToFollow
       );

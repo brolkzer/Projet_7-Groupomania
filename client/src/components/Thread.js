@@ -34,9 +34,11 @@ const Thread = () => {
     <div className="thread-container">
       <ul>
         {!isEmpty(postsData[0]) &&
-          postsData.map((post) => {
-            return <PostCard post={post} key={post.id} />;
-          })}
+          postsData
+            .sort((a, b) => a - b)
+            .map((post) => {
+              return <PostCard post={post} key={post.id} />;
+            })}
       </ul>
     </div>
   );

@@ -23,7 +23,7 @@ const Post = sequelize.define("Post", {
     type: DataTypes.TEXT,
     defaultValue: "",
   },
-  content: { type: DataTypes.STRING },
+  content: { type: DataTypes.STRING(500) },
   picture: { type: DataTypes.STRING },
   video: { type: DataTypes.STRING },
 });

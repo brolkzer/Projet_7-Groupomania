@@ -73,13 +73,13 @@ const Profil = () => {
                 <p onClick={() => setFollowingPopup(true)}>
                   Abonnements :
                   {userData.following
-                    ? " " + userData.following.match(/.{1,32}/g).length
+                    ? " " + userData.following.match(/.{1,36}/g).length
                     : " 0"}
                 </p>
                 <p onClick={() => setFollowersPopup(true)}>
                   Abonnés :
                   {userData.followers
-                    ? userData.followers.match(/.{1,32}/g).length
+                    ? " " + userData.followers.match(/.{1,36}/g).length
                     : " 0"}
                 </p>
                 {followingPopup && (
@@ -98,7 +98,7 @@ const Profil = () => {
                             if (
                               !isEmpty(userData.following) &&
                               userData.following
-                                .match(/.{1,32}/g)
+                                .match(/.{1,36}/g)
                                 .includes(user.id)
                             ) {
                               return (
@@ -141,7 +141,7 @@ const Profil = () => {
                             if (
                               !isEmpty(userData.followers) &&
                               userData.followers
-                                .match(/.{1,32}/g)
+                                .match(/.{1,36}/g)
                                 .includes(user.id)
                             ) {
                               return (

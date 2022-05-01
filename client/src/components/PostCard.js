@@ -71,7 +71,7 @@ const PostCard = ({ post }) => {
                 />
                 <div className="button-container">
                   <button className="btn" onClick={updateContent}>
-                    Valider la modification
+                    Valider
                   </button>
                 </div>
               </div>

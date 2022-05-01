@@ -52,7 +52,69 @@
         }
 
         p {
+          display: flex;
+          flex-wrap: wrap;
+          min-width: 25ch;
+          max-width: 75%;
           margin: 1rem 0;
+        }
+
+        .update-post {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+
+          textarea {
+            font-size: 1.2rem;
+            border: 1px solid $color-3;
+            width: 100%;
+            padding: 10px;
+            border-radius: 20px 20px 6px 20px;
+          }
+
+          .button-container {
+            .btn {
+              font-family: $font-1;
+              font-weight: 500;
+              margin-top: 1rem;
+              padding: 0.5rem 1rem;
+              border: 2px solid $color-2;
+              border-radius: 20px;
+              background: $color-2;
+              width: 240px;
+              transform: translateY(-3px);
+
+              &:hover {
+                width: 250px;
+                letter-spacing: 1px;
+              }
+            }
+          }
+        }
+
+        .button-container {
+          justify-content: flex-end;
+          display: flex;
+
+          div {
+            padding: 5px 9px;
+            margin-left: 5px;
+            background: $color-2;
+            border-radius: 50px;
+            transition: 0.1s;
+            cursor: pointer;
+
+            &:hover {
+              transform: scale(1.07);
+            }
+
+            img {
+              height: 16px;
+              width: 16px;
+              transform: translateY(3px);
+            }
+          }
         }
 
         .card-footer {
@@ -72,6 +134,7 @@
               transform: scale(1.2);
             }
           }
+
           .comment-icon,
           .like-container {
             display: flex;

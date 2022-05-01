@@ -49,13 +49,13 @@ export const uploadPicture = (data, id) => {
   return (dispatch) => {
     return axios
       .post(`${process.env.REACT_APP_API_URL}/upload/${id}`, data)
-      .then((res) => {
+      .then(() => {
         res.status(200).json("post réussi");
         return axios
           .get(`${process.env.REACT_APP_API_URL}/api/user/${id}`)
-          .then((res) =>
-            dispatch({ type: UPLOAD_PICTURE, payload: res.data.picture })
-          )
+          .then((user) => {
+            dispatch({ type: UPLOAD_PICTURE, payload: user.data[0].picture });
+          })
           .catch((err) => console.log(err));
       })
       .catch((err) => console.log(err));

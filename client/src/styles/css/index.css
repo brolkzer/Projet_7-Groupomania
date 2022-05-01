@@ -407,7 +407,79 @@ li {
   gap: 10px;
 }
 .main .thread-container .card-container .card-right p {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  min-width: 25ch;
+  max-width: 75%;
   margin: 1rem 0;
+}
+.main .thread-container .card-container .card-right .update-post {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.main .thread-container .card-container .card-right .update-post textarea {
+  font-size: 1.2rem;
+  border: 1px solid #4e6dd1;
+  width: 100%;
+  padding: 10px;
+  border-radius: 20px 20px 6px 20px;
+}
+.main .thread-container .card-container .card-right .update-post .button-container .btn {
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  border: 2px solid salmon;
+  border-radius: 20px;
+  background: salmon;
+  width: 240px;
+  -webkit-transform: translateY(-3px);
+          transform: translateY(-3px);
+}
+.main .thread-container .card-container .card-right .update-post .button-container .btn:hover {
+  width: 250px;
+  letter-spacing: 1px;
+}
+.main .thread-container .card-container .card-right .button-container {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.main .thread-container .card-container .card-right .button-container div {
+  padding: 5px 9px;
+  margin-left: 5px;
+  background: salmon;
+  border-radius: 50px;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+  cursor: pointer;
+}
+.main .thread-container .card-container .card-right .button-container div:hover {
+  -webkit-transform: scale(1.07);
+          transform: scale(1.07);
+}
+.main .thread-container .card-container .card-right .button-container div img {
+  height: 16px;
+  width: 16px;
+  -webkit-transform: translateY(3px);
+          transform: translateY(3px);
 }
 .main .thread-container .card-container .card-right .card-footer {
   display: -webkit-box;

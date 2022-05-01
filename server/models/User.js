@@ -13,7 +13,12 @@ const sequelize = new Sequelize(
 );
 
 const User = sequelize.define("User", {
-  email: { type: DataTypes.STRING },
+  id: {
+    type: DataTypes.UUID,
+    defaultValue: DataTypes.UUIDV4,
+    primaryKey: true,
+  },
+  email: { type: DataTypes.STRING, unique: true },
   password: { type: DataTypes.STRING },
   firstName: { type: DataTypes.STRING },
   lastName: { type: DataTypes.STRING },
@@ -29,6 +34,10 @@ const User = sequelize.define("User", {
   picture: {
     type: DataTypes.STRING,
     defaultValue: "./assets/random_user.png",
+  },
+  mod: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false,
   },
 });
 

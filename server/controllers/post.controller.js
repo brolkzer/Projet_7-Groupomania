@@ -1,7 +1,9 @@
 const Post = require("../models/Post");
 
 module.exports.getPosts = async (req, res) => {
-  Post.findAll()
+  Post.findAll({
+    order: [["createdAt", "DESC"]],
+  })
     .then((posts) => res.status(200).json(posts))
     .catch((err) => res.status(400).json(err));
 };
