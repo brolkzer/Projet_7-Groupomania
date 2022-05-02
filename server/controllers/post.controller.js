@@ -30,11 +30,12 @@ module.exports.updatePost = async (req, res) => {
 
 module.exports.createPost = async (req, res) => {
   Post.create({
-    posterId: req.params.id,
-    content: req.body.content,
+    posterId: req.body.posterId,
+    content: req.body.message,
     video: req.body.video,
+    picture: req.body.imgString,
   })
-    .then(() => res.status(200).json("Post bien crée"))
+    .then(() => res.status(200).json("post crée"))
     .catch((err) => console.log(err));
 };
 

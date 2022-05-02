@@ -4,15 +4,27 @@ import { dateParser, isEmpty } from "./Utils";
 import FollowButton from "./FollowButton";
 import LikeButton from "./LikeButton";
 import { updatePost } from "../actions/post.actions";
+import { getComments } from "../actions/comment.actions";
 import DeletePost from "./DeletePost";
+import CardComments from "./CardComments";
 
 const PostCard = ({ post }) => {
+  const [loadComment, setLoadComment] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
   const [isUpdated, setIsUpdated] = useState(false);
   const [textUpdate, setTextUpdate] = useState(null);
+  const [showComments, setShowComments] = useState(false);
   const usersData = useSelector((state) => state.usersReducer);
   const userData = useSelector((state) => state.userReducer);
+  const commentData = useSelector((state) => state.commentReducer);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (loadComment) {
+      dispatch(getComments());
+      setLoadComment(false);
+    }
+  }, [loadComment, dispatch]);
 
   const updateContent = () => {
     if (textUpdate) {
@@ -98,12 +110,23 @@ const PostCard = ({ post }) => {
             )}
             <div className="card-footer">
               <div className="comment-icon">
-                <img src="./assets/icons/message1.svg" alt="comment" />
-                <span>Nombres de commentaires</span>
+                <img
+                  onClick={() => setShowComments(!showComments)}
+                  src="./assets/icons/message1.svg"
+                  alt="comment"
+                />
+                <span>
+                  {!isEmpty(commentData)
+                    ? " " +
+                      commentData.filter(
+                        (comment) => comment.postId === post.id
+                      ).length
+                    : " 0"}
+                </span>
               </div>
               <LikeButton post={post} />
             </div>
-            COMMENTAIRES
+            {showComments && <CardComments post={post} />}
           </div>
         </>
       )}

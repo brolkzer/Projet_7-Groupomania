@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { uploadPicture } from "../actions/user.actions";
-const FormData = require("form-data");
+import { uploadPicture, getUser } from "../actions/user.actions";
 
 const UploadImage = () => {
   const [file, setFile] = useState();
   const dispatch = useDispatch();
   const userData = useSelector((state) => state.userReducer);
 
-  const handlePicture = (e) => {
+  const handlePicture = async (e) => {
     e.preventDefault();
     const data = new FormData();
     data.append("file", file);

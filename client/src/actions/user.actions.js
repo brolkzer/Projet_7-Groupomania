@@ -50,13 +50,20 @@ export const uploadPicture = (data, id) => {
     return axios
       .post(`${process.env.REACT_APP_API_URL}/upload/${id}`, data)
       .then(() => {
-        res.status(200).json("post réussi");
-        return axios
-          .get(`${process.env.REACT_APP_API_URL}/api/user/${id}`)
-          .then((user) => {
-            dispatch({ type: UPLOAD_PICTURE, payload: user.data[0].picture });
-          })
-          .catch((err) => console.log(err));
+        dispatch({
+          type: UPLOAD_PICTURE,
+          payload: `./assets/profil/${id}.jpg`,
+        })
+          .then(() => res.status(200))
+          .json("photo de profil modifié")
+          .catch((err) =>
+            res
+              .status(500)
+              .json(
+                "Erreur lors de la tentative de modification de votre photo de profil" +
+                  err
+              )
+          );
       })
       .catch((err) => console.log(err));
   };
