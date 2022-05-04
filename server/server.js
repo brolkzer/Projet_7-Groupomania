@@ -51,13 +51,14 @@ app.use(
 );
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(
-  "/upload",
-  express.static(path.join(__dirname, "assets/images")),
-  userRoutes
-);
+app.use("/upload", userRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/post", postRoutes);
+// app.use(
+//   "/api/post/addPost",
+//   express.static(path.join(__dirname, "")),
+//   postRoutes
+// );
 app.use("/api/comment", commentRoutes);
 
 app.listen(3001, () => {

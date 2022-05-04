@@ -42,12 +42,12 @@ export const editComment = (commentId, content) => {
   };
 };
 
-export const deleteComment = (commentId) => {
+export const deleteComment = (commentId, commenterId, userId, userMod) => {
   return (dispatch) => {
-    return axios({
-      method: "delete",
-      url: `${process.env.REACT_APP_API_URL}/api/comment/${commentId}`,
-    })
+    return axios
+      .delete(`${process.env.REACT_APP_API_URL}/api/comment/${commentId}`, {
+        data: { commenterId, userId, userMod },
+      })
       .then((res) => dispatch({ type: DELETE_COMMENT, payload: { commentId } }))
       .catch((err) => console.log(err));
   };

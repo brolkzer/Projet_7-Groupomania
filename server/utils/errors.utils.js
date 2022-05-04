@@ -6,6 +6,6 @@ module.exports.uploadErrors = (err) => {
 
   if (err.message.includes("max size"))
     errors.maxSize =
-      "Le fichier est trop volumineux, il ne doit pas dépasser 500 Ko";
+      "Le fichier est trop volumineux, il ne doit pas dépasser 5000 Ko";
   return errors;
 };

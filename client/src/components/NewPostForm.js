@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { addPost, getPosts } from "../actions/post.actions";
-import { isEmpty, dateParser } from "./Utils";
+import { isEmpty } from "./Utils";
 
 const NewPostForm = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -28,8 +28,11 @@ const NewPostForm = () => {
       const data = new FormData();
       data.append("posterId", userData.id);
       data.append("message", message);
-      data.append("imgString", imgString);
-      if (file) data.append("file", file);
+
+      if (file) {
+        data.append("imgString", imgString);
+        data.append("file", file);
+      }
       data.append("video", video);
 
       await dispatch(addPost(data, paramsId));
@@ -58,7 +61,7 @@ const NewPostForm = () => {
         setVideo(embed.split("&")[0]);
         findLink.splice(i, 1);
         setMessage(findLink.join(" "));
-        setPostPicture("");
+        setPostPicture(null);
       }
   };
 
@@ -73,32 +76,6 @@ const NewPostForm = () => {
         <i className="fas fa-spinner fa-pulse"></i>
       ) : (
         <>
-          <div className="data">
-            <p>
-              <span>
-                {userData.following
-                  ? " " + userData.following.match(/.{1,36}/g).length
-                  : " 0 "}
-              </span>{" "}
-              Abonnement
-              {userData.following &&
-              userData.following.match(/.{1,36}/g).length > 1
-                ? "s"
-                : null}
-            </p>
-            <p>
-              <span>
-                {userData.followers
-                  ? " " + userData.followers.match(/.{1,36}/g).length
-                  : " 0 "}
-              </span>{" "}
-              Abonné
-              {userData.followers &&
-              userData.followers.match(/.{1,36}/g).length > 1
-                ? "s"
-                : null}
-            </p>
-          </div>
           <NavLink exact to="/Profil">
             <div className="user-info">
               <img src={userData.picture} alt="user-pic" />
@@ -112,22 +89,11 @@ const NewPostForm = () => {
               onChange={(e) => setMessage(e.target.value)}
               value={message}
             />
-            {message || postPicture || video.length > 20 ? (
+            {postPicture || video.length > 20 ? (
               <li className="card-container">
-                <div className="card-left">
-                  <img src={userData.picture} alt="user-pic" />
-                </div>
                 <div className="card-right">
-                  <div className="card-header">
-                    <div className="pseudo">
-                      <h3>
-                        {userData.firstName + " " + userData.lastName + " "}
-                      </h3>
-                    </div>
-                    <span>{dateParser(new Date())}</span>
-                  </div>
+                  <div className="card-header"></div>
                   <div className="content">
-                    <p>{message}</p>
                     <img src={postPicture} alt="" />
                     {video && (
                       <iframe
@@ -146,7 +112,9 @@ const NewPostForm = () => {
               <div className="icon">
                 {isEmpty(video) && (
                   <>
-                    <img src="./assets/icons/picture.svg" alt="img-icon" />
+                    <label htmlFor="file-upload">
+                      <img src="./assets/icons/picture.svg" alt="img-icon" />
+                    </label>
                     <input
                       type="file"
                       id="file-upload"

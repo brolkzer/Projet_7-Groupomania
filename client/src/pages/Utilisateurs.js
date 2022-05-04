@@ -29,7 +29,7 @@ const Utilisateurs = () => {
       <div className="users-container">
         <ul>
           {isEmpty(usersData) ? (
-            <li>Chargement...</li>
+            <i className="fas fa-spinner fa-spin"></i>
           ) : (
             usersData.map((user) => {
               return <UserCard user={user} key={user.id} />;

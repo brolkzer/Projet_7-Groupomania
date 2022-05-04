@@ -1,4 +1,5 @@
 const Post = require("../models/Post");
+const Comment = require("../models/Comment");
 
 module.exports.getPosts = async (req, res) => {
   Post.findAll({
@@ -40,15 +41,18 @@ module.exports.createPost = async (req, res) => {
 };
 
 module.exports.deletePost = async (req, res) => {
-  Post.destroy({
-    where: { id: req.params.id },
-  })
-    .then(() => res.status(203).json("Le post a bien été supprimé"))
-    .catch((err) =>
-      res.status(500).json({
-        error: "Erreur lors de la tentative de suppresion du post" + err,
-      })
-    );
+  try {
+    const postDelete = await Post.destroy({ where: { id: req.params.id } });
+    postDelete;
+    const commentDelete = await Comment.destroy({
+      where: { postId: req.params.id },
+    });
+    commentDelete;
+
+    return res.status(200).json("post bien supprimé");
+  } catch (err) {
+    return res.status(500).json("erreur lors du delete post" + err);
+  }
 };
 
 module.exports.likePost = async (req, res) => {

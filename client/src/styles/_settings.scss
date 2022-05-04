@@ -2,8 +2,9 @@
 $font-1: "Manrope", sans-serif;
 
 $color-1: #1a3794;
-$color-2: salmon;
+$color-2: lightcoral;
 $color-3: #4e6dd1;
+$color-4: rgb(180, 225, 255);
 $white: rgb(255, 255, 255);
 $white-alt: rgb(205, 205, 205);
 
@@ -24,6 +25,12 @@ body {
   background: $white-alt;
   font-family: $font-1;
   @include verticalCenter;
+}
+ul,
+iframe,
+img,
+div {
+  overflow: hidden;
 }
 li {
   list-style-type: none;

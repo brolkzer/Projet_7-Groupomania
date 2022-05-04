@@ -3,7 +3,7 @@ const User = require("../models/User");
 module.exports.uploadProfil = async (req, res) => {
   try {
     const userUpload = await User.findOne({ where: { id: req.params.id } });
-    userUpload.picture = `./assets/profil/${req.params.id}.jpg`;
+    userUpload.picture = req.body.imgString;
     await userUpload.save();
 
     return res.status(200).json("Votre photo de profil a été modifiée");

@@ -1,12 +1,13 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { deletePost } from "../actions/post.actions";
 
 const DeletePost = ({ post }) => {
   const dispatch = useDispatch();
+  const userData = useSelector((state) => state.userReducer);
 
   const destroyPost = () => {
-    dispatch(deletePost(post.id));
+    dispatch(deletePost(post.id, post.posterId, userData.id, userData.mod));
   };
   return (
     <div

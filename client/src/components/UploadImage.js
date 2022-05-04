@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { uploadPicture, getUser } from "../actions/user.actions";
+import { uploadPicture } from "../actions/user.actions";
 
 const UploadImage = () => {
   const [file, setFile] = useState();
@@ -9,15 +9,16 @@ const UploadImage = () => {
 
   const handlePicture = async (e) => {
     e.preventDefault();
+    const imgString = `./assets/profil/${userData.id}.jpg`;
     const data = new FormData();
-    data.append("file", file);
-    data.append("id", userData.id);
-    dispatch(uploadPicture(data, userData.id));
+    if (file) data.append("file", file);
+    data.append("imgString", imgString);
+    await dispatch(uploadPicture(data, userData.id));
   };
 
   return (
-    <form action="" onSubmit={handlePicture} className="upload-pic">
-      <label htmlFor="file">Changer d'image</label>
+    <form action="" onSubmit={(e) => handlePicture(e)} className="upload-pic">
+      <label htmlFor="file">Changer de photo</label>
       <input
         type="file"
         id="file"

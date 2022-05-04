@@ -21,11 +21,18 @@ body {
           align-items: center;
 }
 
+ul,
+iframe,
+img,
+div {
+  overflow: hidden;
+}
+
 li {
   list-style-type: none;
 }
 
-.page-profil .user-desc h1 {
+.home-header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -35,8 +42,116 @@ li {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin-top: 1rem;
+}
+.home-header .post-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: rgb(255, 255, 255);
+  border: 2px solid lightcoral;
+  border-radius: 20px;
+  padding: 1rem;
+  gap: 1rem;
+}
+.home-header .post-container a .user-info img {
+  height: 175px;
+  width: 175px;
+  border-radius: 20px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.home-header :nth-child(2),
+.home-header :nth-child(3) {
+  gap: 1rem;
+}
+.home-header .post-form {
+  padding: 0 0.5rem;
+}
+.home-header .post-form textarea {
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: Manrope, sans-serif;
+  border: 1px solid #4e6dd1;
+  width: 100%;
+  max-width: 85vw;
+  padding: 0.5rem;
+  margin: 1rem 0;
+  border-radius: 20px 20px 6px 20px;
+}
+.home-header .post-form .footer-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 1rem;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+}
+.home-header .post-form .footer-form .icon label {
+  cursor: pointer;
+}
+.home-header .post-form .footer-form .icon input {
+  display: none;
+}
+.home-header .post-form .footer-form .btn-send button {
+  font-family: "Manrope", sans-serif;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border: 2px solid lightcoral;
+  border-radius: 20px;
+  background: lightcoral;
+  -webkit-transform: translateY(-3px);
+          transform: translateY(-3px);
+  cursor: pointer;
+}
+
+.icon button {
+  font-family: "Manrope", sans-serif;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border: 2px solid lightcoral;
+  border-radius: 20px;
+  background: lightcoral;
+  -webkit-transform: translateY(-3px);
+          transform: translateY(-3px);
+  cursor: pointer;
+}
+
+.card-container .card-right .content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-height: 200px;
+  max-height: 400px;
+  min-width: 200px;
+  max-width: 400px;
+}
+
+.page-profil {
+  margin: 0 auto;
+  padding: 3vh;
 }
 .page-profil .user-desc .user-global-container {
   display: -webkit-box;
@@ -52,6 +167,7 @@ li {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  margin: 1rem 0;
 }
 .page-profil .user-desc .user-global-container .user-left-container {
   display: -webkit-box;
@@ -67,12 +183,14 @@ li {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  gap: 30px 0;
+  gap: 15px 0;
 }
 .page-profil .user-desc .user-global-container .user-left-container > img {
   height: 250px;
   width: 250px;
   border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .page-profil .user-desc .user-global-container .user-left-container form {
   display: -webkit-box;
@@ -141,7 +259,41 @@ li {
           flex-direction: column;
   gap: 30px 0;
 }
-.page-profil .user-desc .user-global-container .user-right-container .bio-update h1 {
+.page-profil .user-desc .user-global-container .user-right-container .bio-update {
+  background-color: rgb(255, 255, 255);
+  border: 2px solid lightcoral;
+  border-radius: 20px;
+  padding: 1rem;
+}
+.page-profil .user-desc .user-global-container .user-right-container .bio-update button {
+  font-family: "Manrope", sans-serif;
+  font-weight: 600;
+  margin: 1rem 0;
+  padding: 0.5rem 1rem;
+  border: 2px solid lightcoral;
+  border-radius: 20px;
+  background: lightcoral;
+  -webkit-transform: translateY(-3px);
+          transform: translateY(-3px);
+  cursor: pointer;
+}
+.page-profil .user-desc .user-global-container .user-right-container .bio-update p {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  max-width: 50ch;
+}
+.page-profil .user-desc .user-global-container .user-right-container .bio-update textarea {
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: Manrope, sans-serif;
+  border: 1px solid #4e6dd1;
+  width: 100%;
+  max-width: 85vw;
+  padding: 10px;
+  margin: 1rem 0;
+  border-radius: 20px 20px 6px 20px;
+}
+.page-profil .user-desc .user-global-container .user-right-container .bio-update p:first-child {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -151,21 +303,56 @@ li {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin: 1rem 0;
+  font-size: 22px;
+  font-weight: 500;
+}
+.page-profil .user-desc .user-global-container .user-right-container .bio-update p:nth-child(2) {
+  font-size: 18px;
+  margin: 10px 0;
+}
+.page-profil .user-desc .user-global-container .user-right-container .bio-update p:nth-child(4),
+.page-profil .user-desc .user-global-container .user-right-container .bio-update p:nth-child(5) {
+  cursor: pointer;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  background-color: rgb(180, 225, 255);
+  padding: 0.75rem;
+  border-radius: 20px;
+  margin-bottom: 0.5rem;
+}
+.page-profil .user-desc .user-global-container .user-right-container .bio-update p:last-child {
+  margin: 1rem 0;
+  font-style: italic;
+  font-size: 16px;
 }
 .page-profil .user-desc .user-global-container .user-right-container .popup-profil-container .modal {
+  max-height: 60vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  z-index: 1;
   position: absolute;
   top: 10%;
   left: 50%;
   -webkit-transform: translate(-100%);
           transform: translate(-100%);
-  background: salmon;
+  background: lightcoral;
   padding: 25px;
   border-radius: 20px;
   -webkit-box-shadow: 0 0 2px rgba(131, 130, 130, 0.356);
           box-shadow: 0 0 2px rgba(131, 130, 130, 0.356);
-  overflow: auto;
   -webkit-transform: scaleY(0);
           transform: scaleY(0);
   -webkit-transform-origin: center;
@@ -173,8 +360,13 @@ li {
   -webkit-animation: modal 0.5s forwards;
           animation: modal 0.5s forwards;
 }
+.page-profil .user-desc .user-global-container .user-right-container .popup-profil-container .modal ul {
+  overflow: auto !important;
+  padding: 1rem;
+}
 .page-profil .user-desc .user-global-container .user-right-container .popup-profil-container .modal p {
   min-width: 200px;
+  margin: 0 auto;
 }
 @-webkit-keyframes modal {
   to {
@@ -200,11 +392,91 @@ li {
   -webkit-transform: scale(1.07);
           transform: scale(1.07);
 }
-
-.users-container {
-  margin: 2em auto;
+.page-profil .user-desc .user-global-container .user-right-container .popup-profil-container .modal li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  line-height: 2rem;
+  margin: 1rem 0;
 }
-.users-container .user-card {
+.page-profil .user-desc .user-global-container .user-right-container .popup-profil-container .modal li img {
+  margin: 0 10px;
+  height: 90px;
+  min-width: 90px;
+  max-width: 90px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.page-profil .user-desc .user-global-container .user-right-container .popup-profil-container .modal span button {
+  margin: 0 auto;
+  font-size: 14px;
+  padding: 0.5rem;
+  font-weight: 400;
+  background-color: white;
+  border-radius: 12px 6px;
+  border: solid white 1px;
+  cursor: pointer;
+}
+.page-profil .card-container {
+  display: grid;
+  grid-template-columns: 66px 1fr;
+  border: 2px solid #4e6dd1;
+  background-color: rgb(255, 255, 255);
+  margin: 10px;
+  padding: 16px;
+  border-radius: 20px;
+  margin: 8px auto;
+  position: relative;
+  min-height: 100px;
+}
+.page-profil .card-container .card-left img {
+  height: 52px;
+  width: 52px;
+  border-radius: 20px;
+  -webkit-box-shadow: 1px 1px 3px rgba(51, 51, 51, 0.192);
+          box-shadow: 1px 1px 3px rgba(51, 51, 51, 0.192);
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+@media screen and (max-width: 590px) {
+  .page-profil .card-container .card-left img {
+    height: 40px;
+    width: 40px;
+    margin-left: 18px;
+    border-radius: 14px;
+  }
+}
+@media screen and (max-width: 590px) {
+  .page-profil .card-container .card-left {
+    position: absolute;
+    -webkit-transform: translate(17px, 18px);
+            transform: translate(17px, 18px);
+  }
+}
+.page-profil .card-container .card-right .card-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.page-profil .card-container .card-right .card-header span {
+  font-style: italic;
+  padding-right: 0.5rem;
+}
+.page-profil .card-container .card-right .card-header .pseudo {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -214,10 +486,329 @@ li {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  gap: 10px;
+}
+.page-profil .card-container .card-right p {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  min-width: 25ch;
+  max-width: 75%;
+  margin: 1rem 0;
+}
+.page-profil .card-container .card-right .update-post {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.page-profil .card-container .card-right .update-post textarea {
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: Manrope, sans-serif;
+  border: 1px solid #4e6dd1;
+  width: 100%;
+  max-width: 85vw;
+  padding: 10px;
+  margin: 1rem 0;
+  border-radius: 20px 20px 6px 20px;
+}
+.page-profil .card-container .card-right .update-post .button-container .btn {
+  font-family: "Manrope", sans-serif;
+  font-weight: 600;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  border: 2px solid lightcoral;
+  border-radius: 20px;
+  background: lightcoral;
+  width: 240px;
+  -webkit-transform: translateY(-3px);
+          transform: translateY(-3px);
+  cursor: pointer;
+}
+.page-profil .card-container .card-right .button-container {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.page-profil .card-container .card-right .button-container div {
+  padding: 5px 9px;
+  margin-left: 5px;
+  background: lightcoral;
+  border-radius: 50px;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+  cursor: pointer;
+}
+.page-profil .card-container .card-right .button-container div:hover {
+  -webkit-transform: scale(1.07);
+          transform: scale(1.07);
+}
+.page-profil .card-container .card-right .button-container div img {
+  height: 16px;
+  width: 16px;
+  -webkit-transform: translateY(3px);
+          transform: translateY(3px);
+}
+.page-profil .card-container .card-right .card-footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 12px 0 4px;
+}
+.page-profil .card-container .card-right .card-footer img {
+  height: 22px;
+  width: 22px;
+  cursor: pointer;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+.page-profil .card-container .card-right .card-footer img:hover {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+.page-profil .card-container .card-right .card-footer .comment-icon,
+.page-profil .card-container .card-right .card-footer .like-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-right: 2rem;
+}
+.page-profil .card-container .card-right .card-footer .comment-icon span,
+.page-profil .card-container .card-right .card-footer .like-container span {
+  font-size: 1.02rem;
+  position: absolute;
+  -webkit-transform: translate(29px, 2px);
+          transform: translate(29px, 2px);
+}
+.page-profil .card-container .card-right .comments-container .comment-container {
+  background-color: rgb(180, 225, 255);
+  border-radius: 22px;
+  padding: 1rem 0.5rem;
+  display: grid;
+  grid-template-columns: 66px 1fr;
+  margin: 1rem 0;
+}
+.page-profil .card-container .card-right .comments-container .comment-container .left-part img {
+  height: 52px;
+  width: 52px;
+  border-radius: 20px;
+  -webkit-box-shadow: 1px 1px 3px rgba(51, 51, 51, 0.192);
+          box-shadow: 1px 1px 3px rgba(51, 51, 51, 0.192);
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+@media screen and (max-width: 590px) {
+  .page-profil .card-container .card-right .comments-container .comment-container .left-part img {
+    height: 40px;
+    width: 40px;
+    margin-left: 18px;
+    border-radius: 14px;
+  }
+}
+@media screen and (max-width: 590px) {
+  .page-profil .card-container .card-right .comments-container .comment-container .left-part {
+    position: absolute;
+    -webkit-transform: translate(17px, 18px);
+            transform: translate(17px, 18px);
+  }
+}
+.page-profil .card-container .card-right .comments-container .comment-container .right-part .comment-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.page-profil .card-container .card-right .comments-container .comment-container .right-part .comment-header .pseudo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.page-profil .card-container .card-right .comments-container .comment-container .right-part .comment-header .pseudo span {
+  margin-right: 1rem;
+}
+.page-profil .card-container .card-right .comments-container .comment-container .right-part .edit-comment .edit-comment-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.page-profil .card-container .card-right .comments-container .comment-container .right-part .edit-comment .edit-comment-form input[type=text] {
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: Manrope, sans-serif;
+  border: 1px solid #4e6dd1;
+  width: 100%;
+  max-width: 85vw;
+  padding: 10px;
+  margin: 1rem 0;
+  border-radius: 20px;
+}
+.page-profil .card-container .card-right .comments-container .comment-container .right-part .edit-comment .edit-comment-form label {
+  display: none;
+}
+.page-profil .card-container .card-right .comments-container .comment-container .right-part .edit-comment .edit-comment-form .btn input[type=submit] {
+  font-family: "Manrope", sans-serif;
+  font-weight: 600;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  border: 2px solid lightcoral;
+  border-radius: 20px;
+  background: lightcoral;
+  width: 240px;
+  -webkit-transform: translateY(-3px);
+          transform: translateY(-3px);
+  cursor: pointer;
+  margin: 0 1rem;
+}
+.page-profil .card-container .card-right .comments-container .comment-container .right-part .edit-comment span {
+  padding: 5px 9px;
+  margin-left: 5px;
+  background: lightcoral;
+  border-radius: 50px;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+  cursor: pointer;
+}
+.page-profil .card-container .card-right .comments-container .comment-container .right-part .edit-comment span:hover {
+  -webkit-transform: scale(1.07);
+          transform: scale(1.07);
+}
+.page-profil .card-container .card-right .comments-container .comment-container .right-part .edit-comment span img {
+  height: 16px;
+  width: 16px;
+  -webkit-transform: translateY(3px);
+          transform: translateY(3px);
+}
+.page-profil .card-container .card-right .comments-container .comment-form {
+  padding: 0 0.5rem;
+}
+.page-profil .card-container .card-right .comments-container .comment-form input[type=text] {
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: Manrope, sans-serif;
+  border: 1px solid #4e6dd1;
+  width: 100%;
+  max-width: 90vw;
+  padding: 10px;
+  margin: 1rem 0;
+  border-radius: 20px;
+}
+.page-profil .card-container .card-right .comments-container .comment-form input[type=submit] {
+  font-family: "Manrope", sans-serif;
+  font-weight: 600;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  border: 2px solid lightcoral;
+  border-radius: 20px;
+  background: lightcoral;
+  width: 240px;
+  -webkit-transform: translateY(-3px);
+          transform: translateY(-3px);
+  cursor: pointer;
+}
+.page-profil .followhandler button {
+  font-family: "Manrope", sans-serif;
+  font-weight: 600;
+  padding: 0.25rem 1rem;
+  margin-top: 0.25rem;
+  border: 2px solid lightcoral;
+  border-radius: 20px;
+  background: lightcoral;
+  -webkit-transform: translateY(-3px);
+          transform: translateY(-3px);
+  cursor: pointer;
+}
+
+.users-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 2rem 0;
+}
+.users-container .followhandler button {
+  font-family: "Manrope", sans-serif;
+  font-weight: 600;
+  padding: 0.25rem 1rem;
+  margin-top: 0.25rem;
+  border: 2px solid lightcoral;
+  border-radius: 20px;
+  background: lightcoral;
+  -webkit-transform: translateY(-3px);
+          transform: translateY(-3px);
+  cursor: pointer;
+}
+.users-container .user-card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   background-color: rgb(255, 255, 255);
   border-radius: 10px;
-  margin: 0.5em auto;
-  width: min(100% - 250px, 1100px);
+  margin: 0.5em;
+  padding: 0 0.5rem;
+  width: 85vw;
+  max-width: 1000px;
 }
 .users-container .user-card .user-desc {
   display: -webkit-box;
@@ -228,15 +819,17 @@ li {
           align-items: center;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  margin: 0;
-  padding: 0;
 }
-.users-container .user-card .user-picture {
-  height: 110px;
-  width: 110px;
+.users-container .user-card .user-desc .user-picture {
+  min-height: 110px;
+  max-height: 110px;
+  min-width: 110px;
+  max-width: 110px;
   margin: 0 1em;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
-.users-container .user-card .user-infos {
+.users-container .user-card .user-desc .user-infos {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -245,20 +838,23 @@ li {
       -ms-flex-direction: column;
           flex-direction: column;
 }
-.users-container .user-card .user-infos .user-bio {
+.users-container .user-card .user-desc .user-infos .user-bio {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  width: 45ch;
+  max-width: 70ch;
 }
-.users-container .user-card .user-infos .user-name {
+.users-container .user-card .user-desc .user-infos .user-name {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   font-weight: 700;
   font-size: 1.4em;
 }
 .users-container .user-card .user-follow {
-  margin: 0 0.5em;
+  padding: 0 0.5em;
 }
 
 .navigation {
@@ -271,6 +867,9 @@ li {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .navigation ul a {
   text-decoration: none;
@@ -347,8 +946,21 @@ li {
   color: white;
 }
 
+.main .followhandler button {
+  font-family: "Manrope", sans-serif;
+  font-weight: 600;
+  padding: 0.25rem 1rem;
+  margin-top: 0.25rem;
+  border: 2px solid lightcoral;
+  border-radius: 20px;
+  background: lightcoral;
+  -webkit-transform: translateY(-3px);
+          transform: translateY(-3px);
+  cursor: pointer;
+}
 .main .thread-container {
   padding: 3vh;
+  max-width: 100vw;
 }
 .main .thread-container .card-container {
   display: grid;
@@ -386,6 +998,15 @@ li {
             transform: translate(17px, 18px);
   }
 }
+.main .thread-container .card-container .card-right .post-pic {
+  min-height: 120px;
+  max-height: 300px;
+  min-width: 120px;
+  max-width: 100%;
+  border-radius: 20px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
 .main .thread-container .card-container .card-right .card-header {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -396,11 +1017,15 @@ li {
 }
 .main .thread-container .card-container .card-right .card-header span {
   font-style: italic;
+  padding-right: 0.5rem;
 }
 .main .thread-container .card-container .card-right .card-header .pseudo {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -432,27 +1057,28 @@ li {
           flex-direction: column;
 }
 .main .thread-container .card-container .card-right .update-post textarea {
-  font-size: 1.2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: Manrope, sans-serif;
   border: 1px solid #4e6dd1;
   width: 100%;
+  max-width: 85vw;
   padding: 10px;
+  margin: 1rem 0;
   border-radius: 20px 20px 6px 20px;
 }
 .main .thread-container .card-container .card-right .update-post .button-container .btn {
   font-family: "Manrope", sans-serif;
-  font-weight: 500;
+  font-weight: 600;
   margin-top: 1rem;
   padding: 0.5rem 1rem;
-  border: 2px solid salmon;
+  border: 2px solid lightcoral;
   border-radius: 20px;
-  background: salmon;
+  background: lightcoral;
   width: 240px;
   -webkit-transform: translateY(-3px);
           transform: translateY(-3px);
-}
-.main .thread-container .card-container .card-right .update-post .button-container .btn:hover {
-  width: 250px;
-  letter-spacing: 1px;
+  cursor: pointer;
 }
 .main .thread-container .card-container .card-right .button-container {
   -webkit-box-pack: end;
@@ -465,7 +1091,7 @@ li {
 .main .thread-container .card-container .card-right .button-container div {
   padding: 5px 9px;
   margin-left: 5px;
-  background: salmon;
+  background: lightcoral;
   border-radius: 50px;
   -webkit-transition: 0.1s;
   transition: 0.1s;
@@ -523,6 +1149,153 @@ li {
   position: absolute;
   -webkit-transform: translate(29px, 2px);
           transform: translate(29px, 2px);
+}
+.main .thread-container .card-container .card-right .comments-container .comment-container {
+  background-color: rgb(180, 225, 255);
+  border-radius: 22px;
+  padding: 1rem 0.5rem;
+  display: grid;
+  grid-template-columns: 66px 1fr;
+  margin: 1rem 0;
+}
+.main .thread-container .card-container .card-right .comments-container .comment-container .left-part img {
+  height: 52px;
+  width: 52px;
+  border-radius: 20px;
+  -webkit-box-shadow: 1px 1px 3px rgba(51, 51, 51, 0.192);
+          box-shadow: 1px 1px 3px rgba(51, 51, 51, 0.192);
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+@media screen and (max-width: 590px) {
+  .main .thread-container .card-container .card-right .comments-container .comment-container .left-part img {
+    height: 40px;
+    width: 40px;
+    margin-left: 18px;
+    border-radius: 14px;
+  }
+}
+@media screen and (max-width: 590px) {
+  .main .thread-container .card-container .card-right .comments-container .comment-container .left-part {
+    position: absolute;
+    -webkit-transform: translate(17px, 18px);
+            transform: translate(17px, 18px);
+  }
+}
+.main .thread-container .card-container .card-right .comments-container .comment-container .right-part .comment-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.main .thread-container .card-container .card-right .comments-container .comment-container .right-part .comment-header .pseudo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.main .thread-container .card-container .card-right .comments-container .comment-container .right-part .comment-header .pseudo span {
+  margin-right: 1rem;
+}
+.main .thread-container .card-container .card-right .comments-container .comment-container .right-part .edit-comment .edit-comment-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.main .thread-container .card-container .card-right .comments-container .comment-container .right-part .edit-comment .edit-comment-form input[type=text] {
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: Manrope, sans-serif;
+  border: 1px solid #4e6dd1;
+  width: 100%;
+  max-width: 85vw;
+  padding: 10px;
+  margin: 1rem 0;
+  border-radius: 20px;
+}
+.main .thread-container .card-container .card-right .comments-container .comment-container .right-part .edit-comment .edit-comment-form label {
+  display: none;
+}
+.main .thread-container .card-container .card-right .comments-container .comment-container .right-part .edit-comment .edit-comment-form .btn input[type=submit] {
+  font-family: "Manrope", sans-serif;
+  font-weight: 600;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  border: 2px solid lightcoral;
+  border-radius: 20px;
+  background: lightcoral;
+  width: 240px;
+  -webkit-transform: translateY(-3px);
+          transform: translateY(-3px);
+  cursor: pointer;
+  margin: 0 1rem;
+}
+.main .thread-container .card-container .card-right .comments-container .comment-container .right-part .edit-comment span {
+  padding: 5px 9px;
+  margin-left: 5px;
+  background: lightcoral;
+  border-radius: 50px;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+  cursor: pointer;
+}
+.main .thread-container .card-container .card-right .comments-container .comment-container .right-part .edit-comment span:hover {
+  -webkit-transform: scale(1.07);
+          transform: scale(1.07);
+}
+.main .thread-container .card-container .card-right .comments-container .comment-container .right-part .edit-comment span img {
+  height: 16px;
+  width: 16px;
+  -webkit-transform: translateY(3px);
+          transform: translateY(3px);
+}
+.main .thread-container .card-container .card-right .comments-container .comment-form {
+  padding: 0 0.5rem;
+}
+.main .thread-container .card-container .card-right .comments-container .comment-form input[type=text] {
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: Manrope, sans-serif;
+  border: 1px solid #4e6dd1;
+  width: 100%;
+  max-width: 90vw;
+  padding: 10px;
+  margin: 1rem 0;
+  border-radius: 20px;
+}
+.main .thread-container .card-container .card-right .comments-container .comment-form input[type=submit] {
+  font-family: "Manrope", sans-serif;
+  font-weight: 600;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  border: 2px solid lightcoral;
+  border-radius: 20px;
+  background: lightcoral;
+  width: 240px;
+  -webkit-transform: translateY(-3px);
+          transform: translateY(-3px);
+  cursor: pointer;
 }
 
 .log-page {
@@ -613,7 +1386,7 @@ li {
       justify-content: space-around;
 }
 .connection-from ul li {
-  background: salmon;
+  background: lightcoral;
   color: rgb(255, 255, 255);
   width: 130px;
   padding: 10px 0;

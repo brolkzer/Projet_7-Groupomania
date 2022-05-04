@@ -42,12 +42,12 @@ const FollowButton = ({ idToFollow }) => {
   return (
     <>
       {isFollowed && !isEmpty(userData) && (
-        <span onClick={handleUnfollow}>
+        <span className="followhandler" onClick={handleUnfollow}>
           <button className="unfollow-btn">Abonné</button>
         </span>
       )}
       {isFollowed === false && !isEmpty(userData) && (
-        <span onClick={handleFollow}>
+        <span className="followhandler" onClick={handleFollow}>
           <button className="follow-btn">S'abonner</button>
         </span>
       )}

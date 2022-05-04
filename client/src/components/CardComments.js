@@ -46,7 +46,7 @@ const CardComments = ({ post }) => {
               <div className="right-part">
                 <div className="comment-header">
                   <div className="pseudo">
-                    <h3>
+                    <span>
                       {!isEmpty(usersData[0]) &&
                         usersData
                           .map((user) => {
@@ -55,7 +55,7 @@ const CardComments = ({ post }) => {
                             else return null;
                           })
                           .join("")}
-                    </h3>
+                    </span>
                     {comment.commenterId != userData.id && (
                       <FollowButton idToFollow={comment.commenterId} />
                     )}

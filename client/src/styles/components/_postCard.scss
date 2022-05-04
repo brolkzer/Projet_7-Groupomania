@@ -1,6 +1,20 @@
 .main {
+  .followhandler {
+    button {
+      font-family: $font-1;
+      font-weight: 600;
+      padding: 0.25rem 1rem;
+      margin-top: 0.25rem;
+      border: 2px solid $color-2;
+      border-radius: 20px;
+      background: $color-2;
+      transform: translateY(-3px);
+      cursor: pointer;
+    }
+  }
   .thread-container {
     padding: 3vh;
+    max-width: 100vw;
 
     .card-container {
       display: grid;
@@ -36,16 +50,26 @@
       }
 
       .card-right {
+        .post-pic {
+          min-height: 120px;
+          max-height: 300px;
+          min-width: 120px;
+          max-width: 100%;
+          border-radius: 20px;
+          object-fit: cover;
+        }
         .card-header {
           display: flex;
           justify-content: space-between;
 
           span {
             font-style: italic;
+            padding-right: 0.5rem;
           }
 
           .pseudo {
             display: flex;
+            align-items: center;
             justify-content: space-between;
             gap: 10px;
           }
@@ -66,17 +90,21 @@
           flex-direction: column;
 
           textarea {
-            font-size: 1.2rem;
+            font-size: 1rem;
+            font-weight: 500;
+            font-family: Manrope, sans-serif;
             border: 1px solid $color-3;
             width: 100%;
+            max-width: 85vw;
             padding: 10px;
+            margin: 1rem 0;
             border-radius: 20px 20px 6px 20px;
           }
 
           .button-container {
             .btn {
               font-family: $font-1;
-              font-weight: 500;
+              font-weight: 600;
               margin-top: 1rem;
               padding: 0.5rem 1rem;
               border: 2px solid $color-2;
@@ -84,11 +112,7 @@
               background: $color-2;
               width: 240px;
               transform: translateY(-3px);
-
-              &:hover {
-                width: 250px;
-                letter-spacing: 1px;
-              }
+              cursor: pointer;
             }
           }
         }
@@ -145,6 +169,139 @@
               font-size: 1.02rem;
               position: absolute;
               transform: translate(29px, 2px);
+            }
+          }
+        }
+
+        .comments-container {
+          .comment-container {
+            background-color: $color-4;
+            border-radius: 22px;
+            padding: 1rem 0.5rem;
+            display: grid;
+            grid-template-columns: 66px 1fr;
+            margin: 1rem 0;
+            .left-part {
+              img {
+                height: 52px;
+                width: 52px;
+                border-radius: 20px;
+                box-shadow: 1px 1px 3px rgba(51, 51, 51, 0.192);
+                object-fit: cover;
+
+                @media screen and(max-width: 590px) {
+                  height: 40px;
+                  width: 40px;
+                  margin-left: 18px;
+                  border-radius: 14px;
+                }
+              }
+              @media screen and(max-width: 590px) {
+                position: absolute;
+                transform: translate(17px, 18px);
+              }
+            }
+            .right-part {
+              .comment-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                .pseudo {
+                  display: flex;
+                  justify-content: space-around;
+                  align-items: center;
+                  flex-wrap: wrap;
+
+                  span {
+                    margin-right: 1rem;
+                  }
+                }
+              }
+              .edit-comment {
+                .edit-comment-form {
+                  @include verticalCenter;
+                  flex-direction: column;
+
+                  input[type="text"] {
+                    font-size: 1rem;
+                    font-weight: 500;
+                    font-family: Manrope, sans-serif;
+                    border: 1px solid $color-3;
+                    width: 100%;
+                    max-width: 85vw;
+                    padding: 10px;
+                    margin: 1rem 0;
+                    border-radius: 20px;
+                  }
+
+                  label {
+                    display: none;
+                  }
+
+                  .btn {
+                    input[type="submit"] {
+                      font-family: $font-1;
+                      font-weight: 600;
+                      margin-top: 1rem;
+                      padding: 0.5rem 1rem;
+                      border: 2px solid $color-2;
+                      border-radius: 20px;
+                      background: $color-2;
+                      width: 240px;
+                      transform: translateY(-3px);
+                      cursor: pointer;
+                      margin: 0 1rem;
+                    }
+                  }
+                }
+                span {
+                  padding: 5px 9px;
+                  margin-left: 5px;
+                  background: $color-2;
+                  border-radius: 50px;
+                  transition: 0.1s;
+                  cursor: pointer;
+
+                  &:hover {
+                    transform: scale(1.07);
+                  }
+
+                  img {
+                    height: 16px;
+                    width: 16px;
+                    transform: translateY(3px);
+                  }
+                }
+              }
+            }
+          }
+
+          .comment-form {
+            padding: 0 0.5rem;
+            input[type="text"] {
+              font-size: 1rem;
+              font-weight: 500;
+              font-family: Manrope, sans-serif;
+              border: 1px solid $color-3;
+              width: 100%;
+              max-width: 90vw;
+              padding: 10px;
+              margin: 1rem 0;
+              border-radius: 20px;
+            }
+
+            input[type="submit"] {
+              font-family: $font-1;
+              font-weight: 600;
+              margin-top: 1rem;
+              padding: 0.5rem 1rem;
+              border: 2px solid $color-2;
+              border-radius: 20px;
+              background: $color-2;
+              width: 240px;
+              transform: translateY(-3px);
+              cursor: pointer;
             }
           }
         }

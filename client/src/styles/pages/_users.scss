@@ -1,48 +1,64 @@
 .users-container {
-    margin: 2em auto;
-    
-    .user-card {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        background-color: $white;
-        border-radius: 10px;
-        margin: 0.5em auto;
-        width: min(100% - 250px, 1100px);
-        
-            .user-desc {
-                display: flex;
-                align-items: center;
-                justify-content: space-around;
-                
-                margin: 0;
-                padding: 0;
-            }
-
-            .user-picture {
-                height: 110px;
-                width: 110px;
-                margin: 0 1em;
-            }
-
-            .user-infos {
-                display: flex;
-                flex-direction: column;
-
-                    .user-bio {
-                        display: flex;
-                        flex-wrap: wrap;
-                        width: 45ch;
-                    }
-
-                    .user-name {
-                        font-weight: 700;
-                        font-size: 1.4em;
-                    }
-            }
-
-            .user-follow {
-                margin: 0 0.5em;
-            }
+  @include verticalCenter;
+  margin: 2rem 0;
+  .followhandler {
+    button {
+      font-family: $font-1;
+      font-weight: 600;
+      padding: 0.25rem 1rem;
+      margin-top: 0.25rem;
+      border: 2px solid $color-2;
+      border-radius: 20px;
+      background: $color-2;
+      transform: translateY(-3px);
+      cursor: pointer;
     }
+  }
+  .user-card {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $white;
+    border-radius: 10px;
+    margin: 0.5em;
+    padding: 0 0.5rem;
+    width: 85vw;
+    max-width: 1000px;
+
+    .user-desc {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+
+      .user-picture {
+        min-height: 110px;
+        max-height: 110px;
+        min-width: 110px;
+        max-width: 110px;
+        margin: 0 1em;
+        object-fit: cover;
+      }
+      .user-infos {
+        display: flex;
+        flex-direction: column;
+
+        .user-bio {
+          display: flex;
+          flex-wrap: wrap;
+          max-width: 70ch;
+        }
+
+        .user-name {
+          display: flex;
+          font-weight: 700;
+          font-size: 1.4em;
+        }
+      }
+    }
+
+    .user-follow {
+      padding: 0 0.5em;
+    }
+  }
 }

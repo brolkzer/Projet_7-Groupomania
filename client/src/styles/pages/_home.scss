@@ -1,0 +1,99 @@
+.home-header {
+  @include verticalCenter;
+  margin-top: 1rem;
+
+  .post-container {
+    @include verticalCenter;
+    flex-direction: column;
+    background-color: $white;
+    border: 2px solid $color-2;
+    border-radius: 20px;
+    padding: 1rem;
+    gap: 1rem;
+
+    a {
+      .user-info {
+        img {
+          height: 175px;
+          width: 175px;
+          border-radius: 20px;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+
+  :nth-child(2),
+  :nth-child(3) {
+    gap: 1rem;
+  }
+
+  .post-form {
+    padding: 0 0.5rem;
+
+    textarea {
+      font-size: 1rem;
+      font-weight: 500;
+      font-family: Manrope, sans-serif;
+      border: 1px solid $color-3;
+      width: 100%;
+      max-width: 85vw;
+      padding: 0.5rem;
+      margin: 1rem 0;
+      border-radius: 20px 20px 6px 20px;
+    }
+
+    .footer-form {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1rem;
+      box-sizing: content-box;
+
+      .icon {
+        label {
+          cursor: pointer;
+        }
+        input {
+          display: none;
+        }
+      }
+
+      .btn-send {
+        button {
+          font-family: $font-1;
+          font-weight: 600;
+          padding: 0.5rem 1rem;
+          border: 2px solid $color-2;
+          border-radius: 20px;
+          background: $color-2;
+          transform: translateY(-3px);
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+.icon {
+  button {
+    font-family: $font-1;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border: 2px solid $color-2;
+    border-radius: 20px;
+    background: $color-2;
+    transform: translateY(-3px);
+    cursor: pointer;
+  }
+}
+.card-container {
+  .card-right {
+    .content {
+      @include verticalCenter;
+      min-height: 200px;
+      max-height: 400px;
+      min-width: 200px;
+      max-width: 400px;
+    }
+  }
+}

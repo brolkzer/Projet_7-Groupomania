@@ -28,7 +28,15 @@ const PostCard = ({ post }) => {
 
   const updateContent = () => {
     if (textUpdate) {
-      dispatch(updatePost(post.id, textUpdate));
+      dispatch(
+        updatePost(
+          post.id,
+          post.posterId,
+          textUpdate,
+          userData.id,
+          userData.mod
+        )
+      );
     }
     setIsUpdated(false);
   };
@@ -88,7 +96,9 @@ const PostCard = ({ post }) => {
                 </div>
               </div>
             )}
-            {post.picture && <img src={post.picture} alt="post-pic" />}
+            {post.picture && (
+              <img src={post.picture} alt="" className="post-pic" />
+            )}
             {post.video && (
               <iframe
                 width="560"
@@ -96,18 +106,17 @@ const PostCard = ({ post }) => {
                 src={post.video}
                 title="YouTube video player"
                 frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               ></iframe>
             )}
-            {userData.id === post.posterId && (
+            {userData.id === post.posterId || userData.mod === true ? (
               <div className="button-container">
                 <div onClick={() => setIsUpdated(!isUpdated)}>
                   <img src="./assets/icons/edit.svg" alt="edit-icon" />
                 </div>
                 <DeletePost post={post} />
               </div>
-            )}
+            ) : null}
             <div className="card-footer">
               <div className="comment-icon">
                 <img

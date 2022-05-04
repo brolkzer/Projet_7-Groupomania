@@ -1,20 +1,47 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateBio } from "../actions/user.actions";
 import Header from "../components/Header";
 import Navigation from "../components/Navigation";
 import UploadImage from "../components/UploadImage";
-import FollowButton from "../components/FollowButton";
+import PostCard from "../components/PostCard";
 import { dateParser, isEmpty } from "../components/Utils";
+import { getPosts } from "../actions/post.actions";
+import FollowButton from "../components/FollowButton";
 
 const Profil = () => {
   const userData = useSelector((state) => state.userReducer);
   const usersData = useSelector((state) => state.usersReducer);
+  const postData = useSelector((state) => state.postReducer);
+  const commentData = useSelector((state) => state.commentReducer);
   const [bio, setBio] = useState("");
   const [updateForm, setUpdateForm] = useState(false);
   const dispatch = useDispatch();
   const [followingPopup, setFollowingPopup] = useState(false);
   const [followersPopup, setFollowersPopup] = useState(false);
+
+  const [count, setCount] = useState(5);
+  const [loadPost, setLoadPost] = useState(true);
+
+  const loadMore = () => {
+    if (
+      window.innerHeight + document.documentElement.scrollTop + 1 >
+      document.scrollingElement.scrollHeight
+    ) {
+      setLoadPost(true);
+    }
+  };
+
+  useEffect(() => {
+    if (loadPost) {
+      dispatch(getPosts(count));
+      setLoadPost(false);
+      setCount(count + 5);
+    }
+
+    window.addEventListener("scroll", loadMore);
+    return () => window.removeEventListener("scroll", loadMore);
+  }, [loadPost, dispatch]);
 
   const handleUpdate = () => {
     dispatch(updateBio(userData.id, bio));
@@ -27,12 +54,8 @@ const Profil = () => {
       <Navigation />
       <div className="page-profil">
         <div className="user-desc">
-          <h1>
-            Profil de {userData.firstName} {userData.lastName}
-          </h1>
           <div className="user-global-container">
             <div className="user-left-container">
-              <h2>Photo de profil</h2>
               <img
                 src={userData.picture}
                 alt={
@@ -46,7 +69,7 @@ const Profil = () => {
             </div>
             <div className="user-right-container">
               <div className="bio-update">
-                <h1>Bio</h1>
+                <p>Bio</p>
                 {updateForm === false && (
                   <>
                     <p>{userData.bio}</p>
@@ -60,6 +83,7 @@ const Profil = () => {
                     <textarea
                       type="text"
                       defaultValue={userData.bio}
+                      value={bio}
                       onChange={(e) => {
                         setBio(e.target.value);
                       }}
@@ -69,7 +93,7 @@ const Profil = () => {
                     </button>
                   </>
                 )}
-                <p>Membre depuis le : {dateParser(userData.createdAt)}</p>
+
                 <p onClick={() => setFollowingPopup(true)}>
                   Abonnements :
                   {userData.following
@@ -82,6 +106,7 @@ const Profil = () => {
                     ? " " + userData.followers.match(/.{1,36}/g).length
                     : " 0"}
                 </p>
+                <p>Membre depuis le : {dateParser(userData.createdAt)}</p>
                 {followingPopup && (
                   <div className="popup-profil-container">
                     <div className="modal">
@@ -171,6 +196,14 @@ const Profil = () => {
                 )}
               </div>
             </div>
+          </div>
+        </div>
+        <div className="profil-posts">
+          <div className="user-posts">
+            {!isEmpty(postData) &&
+              postData
+                .filter((postdata) => postdata.posterId === userData.id)
+                .map((post) => <PostCard post={post} />)}
           </div>
         </div>
       </div>
