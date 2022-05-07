@@ -80,7 +80,7 @@ const PostCard = ({ post }) => {
                   <FollowButton idToFollow={post.posterId} />
                 )}
               </div>
-              <span>{dateParser(post.createdAt)}</span>
+              <span className="sign-date">{dateParser(post.createdAt)}</span>
             </div>
             {isUpdated === false && <p>{post.content}</p>}
             {isUpdated && (

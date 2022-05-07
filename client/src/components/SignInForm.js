@@ -5,10 +5,10 @@ import Cookies from "js-cookie";
 const SignInForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const errorId = document.querySelector(".error.id");
 
   const handleLogin = (e) => {
     e.preventDefault();
-    const errorId = document.querySelector(".error.id");
 
     axios({
       method: "post",
