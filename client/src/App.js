@@ -9,6 +9,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { useDispatch } from "react-redux";
 import { getUser } from "./actions/user.actions";
+import User from "./pages/User";
 
 const App = () => {
   const [uid, setUid] = useState(null);
@@ -44,6 +45,7 @@ const App = () => {
               <Route path="/" element={<Accueil />}></Route>
               <Route path="/Profil" element={<Profil />}></Route>
               <Route path="/Utilisateurs" element={<Utilisateurs />}></Route>
+              <Route path="/User" element={<User />}></Route>
               <Route path="/Log" element={<Accueil />}></Route>
             </>
           ) : (

@@ -62,6 +62,37 @@ const NewPostForm = () => {
         findLink.splice(i, 1);
         setMessage(findLink.join(" "));
         setPostPicture(null);
+      } else if (
+        findLink[i].includes("https://www.giphy") ||
+        findLink[i].includes("https://giphy")
+      ) {
+        if (findLink[i].includes("clips")) {
+          let clearedEmbed = findLink[i].split("-").reverse()[0];
+          let embed = findLink[i].replace("clips/", "embed/");
+          let embed0 = embed.split("/")[0];
+          let embed1 = embed.split("/")[1];
+          let embed2 = embed.split("/")[2];
+          let embed3 = embed.split("/")[3];
+          let embedLink =
+            embed0 + "//" + embed1 + embed2 + "/" + embed3 + "/" + clearedEmbed;
+          setVideo(embedLink);
+          findLink.splice(i, 1);
+          setMessage(findLink.join(" "));
+          setPostPicture(null);
+        } else if (findLink[i].includes("gifs")) {
+          let clearedEmbed = findLink[i].split("-").reverse()[0];
+          let embed = findLink[i].replace("gifs/", "embed/");
+          let embed0 = embed.split("/")[0];
+          let embed1 = embed.split("/")[1];
+          let embed2 = embed.split("/")[2];
+          let embed3 = embed.split("/")[3];
+          let embedLink =
+            embed0 + "//" + embed1 + embed2 + "/" + embed3 + "/" + clearedEmbed;
+          setVideo(embedLink);
+          findLink.splice(i, 1);
+          setMessage(findLink.join(" "));
+          setPostPicture(null);
+        }
       }
   };
 
@@ -99,7 +130,7 @@ const NewPostForm = () => {
                       <iframe
                         src={video}
                         frameBorder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allow=""
                         allowFullScreen
                         title={video}
                       ></iframe>

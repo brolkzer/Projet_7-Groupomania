@@ -277,23 +277,7 @@ li {
           transform: translateY(-3px);
   cursor: pointer;
 }
-.page-profil .user-desc .user-global-container .user-right-container .bio-update p {
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  max-width: 50ch;
-}
-.page-profil .user-desc .user-global-container .user-right-container .bio-update textarea {
-  font-size: 1rem;
-  font-weight: 500;
-  font-family: Manrope, sans-serif;
-  border: 1px solid #4e6dd1;
-  width: 100%;
-  max-width: 85vw;
-  padding: 10px;
-  margin: 1rem 0;
-  border-radius: 20px 20px 6px 20px;
-}
-.page-profil .user-desc .user-global-container .user-right-container .bio-update p:first-child {
+.page-profil .user-desc .user-global-container .user-right-container .bio-update .bio-title {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -307,12 +291,14 @@ li {
   font-size: 22px;
   font-weight: 500;
 }
-.page-profil .user-desc .user-global-container .user-right-container .bio-update p:nth-child(2) {
+.page-profil .user-desc .user-global-container .user-right-container .bio-update .bio-content {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  max-width: 50ch;
   font-size: 18px;
   margin: 10px 0;
 }
-.page-profil .user-desc .user-global-container .user-right-container .bio-update p:nth-child(4),
-.page-profil .user-desc .user-global-container .user-right-container .bio-update p:nth-child(5) {
+.page-profil .user-desc .user-global-container .user-right-container .bio-update .followhandlers {
   cursor: pointer;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -322,10 +308,21 @@ li {
   border-radius: 20px;
   margin-bottom: 0.5rem;
 }
-.page-profil .user-desc .user-global-container .user-right-container .bio-update p:last-child {
+.page-profil .user-desc .user-global-container .user-right-container .bio-update .bio-date {
   margin: 1rem 0;
   font-style: italic;
   font-size: 16px;
+}
+.page-profil .user-desc .user-global-container .user-right-container .bio-update textarea {
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: Manrope, sans-serif;
+  border: 1px solid #4e6dd1;
+  width: 100%;
+  max-width: 85vw;
+  padding: 10px;
+  margin: 1rem 0;
+  border-radius: 20px 20px 6px 20px;
 }
 .page-profil .user-desc .user-global-container .user-right-container .popup-profil-container .modal {
   max-height: 60vh;
@@ -364,9 +361,20 @@ li {
   overflow: auto !important;
   padding: 1rem;
 }
-.page-profil .user-desc .user-global-container .user-right-container .popup-profil-container .modal p {
+.page-profil .user-desc .user-global-container .user-right-container .popup-profil-container .modal .modal-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   min-width: 200px;
-  margin: 0 auto;
+  margin: 0;
+  font-size: 22px;
+  font-weight: 500;
 }
 @-webkit-keyframes modal {
   to {
@@ -393,12 +401,8 @@ li {
           transform: scale(1.07);
 }
 .page-profil .user-desc .user-global-container .user-right-container .popup-profil-container .modal li {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  display: grid;
+  grid-template-columns: 110px 2fr 1fr;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -417,6 +421,10 @@ li {
   border-radius: 50%;
   -o-object-fit: cover;
      object-fit: cover;
+}
+.page-profil .user-desc .user-global-container .user-right-container .popup-profil-container .modal li p {
+  font-size: 18px;
+  font-weight: 500;
 }
 .page-profil .user-desc .user-global-container .user-right-container .popup-profil-container .modal span button {
   margin: 0 auto;
@@ -463,6 +471,15 @@ li {
     -webkit-transform: translate(17px, 18px);
             transform: translate(17px, 18px);
   }
+}
+.page-profil .card-container .card-right .post-pic {
+  min-height: 120px;
+  max-height: 300px;
+  min-width: 120px;
+  max-width: 100%;
+  border-radius: 20px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .page-profil .card-container .card-right .card-header {
   display: -webkit-box;
@@ -828,6 +845,7 @@ li {
   margin: 0 1em;
   -o-object-fit: cover;
      object-fit: cover;
+  cursor: pointer;
 }
 .users-container .user-card .user-desc .user-infos {
   display: -webkit-box;
@@ -852,9 +870,568 @@ li {
   display: flex;
   font-weight: 700;
   font-size: 1.4em;
+  cursor: pointer;
+}
+.users-container .user-card .user-desc .user-infos .user-name:hover {
+  color: lightcoral;
 }
 .users-container .user-card .user-follow {
   padding: 0 0.5em;
+}
+
+.user-page {
+  margin: 0 auto;
+  padding: 3vh;
+}
+.user-page .user-desc .user-global-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin: 1rem 0;
+}
+.user-page .user-desc .user-global-container .user-left-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 15px 0;
+}
+.user-page .user-desc .user-global-container .user-left-container > img {
+  height: 250px;
+  width: 250px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.user-page .user-desc .user-global-container .user-right-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 30px 0;
+}
+.user-page .user-desc .user-global-container .user-right-container .bio-update {
+  background-color: rgb(255, 255, 255);
+  border: 2px solid lightcoral;
+  border-radius: 20px;
+  padding: 1rem;
+}
+.user-page .user-desc .user-global-container .user-right-container .bio-update .bio-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 1rem 0;
+  font-size: 22px;
+  font-weight: 500;
+}
+.user-page .user-desc .user-global-container .user-right-container .bio-update .bio-content {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  max-width: 50ch;
+  font-size: 18px;
+  margin: 10px 0;
+}
+.user-page .user-desc .user-global-container .user-right-container .bio-update .followhandlers {
+  cursor: pointer;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  background-color: rgb(180, 225, 255);
+  padding: 0.75rem;
+  border-radius: 20px;
+  margin-bottom: 0.5rem;
+}
+.user-page .user-desc .user-global-container .user-right-container .bio-update .bio-date {
+  margin: 1rem 0;
+  font-style: italic;
+  font-size: 16px;
+}
+.user-page .user-desc .user-global-container .user-right-container .popup-profil-container .modal {
+  max-height: 60vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  z-index: 1;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  -webkit-transform: translate(-100%);
+          transform: translate(-100%);
+  background: lightcoral;
+  padding: 25px;
+  border-radius: 20px;
+  -webkit-box-shadow: 0 0 2px rgba(131, 130, 130, 0.356);
+          box-shadow: 0 0 2px rgba(131, 130, 130, 0.356);
+  -webkit-transform: scaleY(0);
+          transform: scaleY(0);
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  -webkit-animation: modal 0.5s forwards;
+          animation: modal 0.5s forwards;
+}
+.user-page .user-desc .user-global-container .user-right-container .popup-profil-container .modal ul {
+  overflow: auto !important;
+  padding: 1rem;
+}
+.user-page .user-desc .user-global-container .user-right-container .popup-profil-container .modal .modal-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-width: 200px;
+  margin: 0;
+  font-size: 22px;
+  font-weight: 500;
+}
+@keyframes modal {
+  to {
+    -webkit-transform: scale(1) translate(-50%);
+            transform: scale(1) translate(-50%);
+  }
+}
+.user-page .user-desc .user-global-container .user-right-container .popup-profil-container .modal .cross {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+  cursor: pointer;
+}
+.user-page .user-desc .user-global-container .user-right-container .popup-profil-container .modal .cross:hover {
+  -webkit-transform: scale(1.07);
+          transform: scale(1.07);
+}
+.user-page .user-desc .user-global-container .user-right-container .popup-profil-container .modal li {
+  display: grid;
+  grid-template-columns: 110px 2fr 1fr;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  line-height: 2rem;
+  margin: 1rem 0;
+}
+.user-page .user-desc .user-global-container .user-right-container .popup-profil-container .modal li img {
+  margin: 0 10px;
+  height: 90px;
+  min-width: 90px;
+  max-width: 90px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.user-page .user-desc .user-global-container .user-right-container .popup-profil-container .modal li p {
+  font-size: 18px;
+  font-weight: 500;
+}
+.user-page .user-desc .user-global-container .user-right-container .popup-profil-container .modal span button {
+  margin: 0 auto;
+  font-size: 14px;
+  padding: 0.5rem;
+  font-weight: 400;
+  background-color: white;
+  border-radius: 12px 6px;
+  border: solid white 1px;
+  cursor: pointer;
+}
+.user-page .card-container {
+  display: grid;
+  grid-template-columns: 66px 1fr;
+  border: 2px solid #4e6dd1;
+  background-color: rgb(255, 255, 255);
+  margin: 10px;
+  padding: 16px;
+  border-radius: 20px;
+  margin: 8px auto;
+  position: relative;
+  min-height: 100px;
+}
+.user-page .card-container .card-left img {
+  height: 52px;
+  width: 52px;
+  border-radius: 20px;
+  -webkit-box-shadow: 1px 1px 3px rgba(51, 51, 51, 0.192);
+          box-shadow: 1px 1px 3px rgba(51, 51, 51, 0.192);
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+@media screen and (max-width: 590px) {
+  .user-page .card-container .card-left img {
+    height: 40px;
+    width: 40px;
+    margin-left: 18px;
+    border-radius: 14px;
+  }
+}
+@media screen and (max-width: 590px) {
+  .user-page .card-container .card-left {
+    position: absolute;
+    -webkit-transform: translate(17px, 18px);
+            transform: translate(17px, 18px);
+  }
+}
+.user-page .card-container .card-right .post-pic {
+  min-height: 120px;
+  max-height: 300px;
+  min-width: 120px;
+  max-width: 100%;
+  border-radius: 20px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.user-page .card-container .card-right .card-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.user-page .card-container .card-right .card-header span {
+  font-style: italic;
+  padding-right: 0.5rem;
+}
+.user-page .card-container .card-right .card-header .pseudo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  gap: 10px;
+}
+.user-page .card-container .card-right p {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  min-width: 25ch;
+  max-width: 75%;
+  margin: 1rem 0;
+}
+.user-page .card-container .card-right .update-post {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.user-page .card-container .card-right .update-post textarea {
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: Manrope, sans-serif;
+  border: 1px solid #4e6dd1;
+  width: 100%;
+  max-width: 85vw;
+  padding: 10px;
+  margin: 1rem 0;
+  border-radius: 20px 20px 6px 20px;
+}
+.user-page .card-container .card-right .update-post .button-container .btn {
+  font-family: "Manrope", sans-serif;
+  font-weight: 600;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  border: 2px solid lightcoral;
+  border-radius: 20px;
+  background: lightcoral;
+  width: 240px;
+  -webkit-transform: translateY(-3px);
+          transform: translateY(-3px);
+  cursor: pointer;
+}
+.user-page .card-container .card-right .button-container {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.user-page .card-container .card-right .button-container div {
+  padding: 5px 9px;
+  margin-left: 5px;
+  background: lightcoral;
+  border-radius: 50px;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+  cursor: pointer;
+}
+.user-page .card-container .card-right .button-container div:hover {
+  -webkit-transform: scale(1.07);
+          transform: scale(1.07);
+}
+.user-page .card-container .card-right .button-container div img {
+  height: 16px;
+  width: 16px;
+  -webkit-transform: translateY(3px);
+          transform: translateY(3px);
+}
+.user-page .card-container .card-right .card-footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 12px 0 4px;
+}
+.user-page .card-container .card-right .card-footer img {
+  height: 22px;
+  width: 22px;
+  cursor: pointer;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+.user-page .card-container .card-right .card-footer img:hover {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+.user-page .card-container .card-right .card-footer .comment-icon,
+.user-page .card-container .card-right .card-footer .like-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-right: 2rem;
+}
+.user-page .card-container .card-right .card-footer .comment-icon span,
+.user-page .card-container .card-right .card-footer .like-container span {
+  font-size: 1.02rem;
+  position: absolute;
+  -webkit-transform: translate(29px, 2px);
+          transform: translate(29px, 2px);
+}
+.user-page .card-container .card-right .comments-container .comment-container {
+  background-color: rgb(180, 225, 255);
+  border-radius: 22px;
+  padding: 1rem 0.5rem;
+  display: grid;
+  grid-template-columns: 66px 1fr;
+  margin: 1rem 0;
+}
+.user-page .card-container .card-right .comments-container .comment-container .left-part img {
+  height: 52px;
+  width: 52px;
+  border-radius: 20px;
+  -webkit-box-shadow: 1px 1px 3px rgba(51, 51, 51, 0.192);
+          box-shadow: 1px 1px 3px rgba(51, 51, 51, 0.192);
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+@media screen and (max-width: 590px) {
+  .user-page .card-container .card-right .comments-container .comment-container .left-part img {
+    height: 40px;
+    width: 40px;
+    margin-left: 18px;
+    border-radius: 14px;
+  }
+}
+@media screen and (max-width: 590px) {
+  .user-page .card-container .card-right .comments-container .comment-container .left-part {
+    position: absolute;
+    -webkit-transform: translate(17px, 18px);
+            transform: translate(17px, 18px);
+  }
+}
+.user-page .card-container .card-right .comments-container .comment-container .right-part .comment-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.user-page .card-container .card-right .comments-container .comment-container .right-part .comment-header .pseudo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.user-page .card-container .card-right .comments-container .comment-container .right-part .comment-header .pseudo span {
+  margin-right: 1rem;
+}
+.user-page .card-container .card-right .comments-container .comment-container .right-part .edit-comment .edit-comment-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.user-page .card-container .card-right .comments-container .comment-container .right-part .edit-comment .edit-comment-form input[type=text] {
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: Manrope, sans-serif;
+  border: 1px solid #4e6dd1;
+  width: 100%;
+  max-width: 85vw;
+  padding: 10px;
+  margin: 1rem 0;
+  border-radius: 20px;
+}
+.user-page .card-container .card-right .comments-container .comment-container .right-part .edit-comment .edit-comment-form label {
+  display: none;
+}
+.user-page .card-container .card-right .comments-container .comment-container .right-part .edit-comment .edit-comment-form .btn input[type=submit] {
+  font-family: "Manrope", sans-serif;
+  font-weight: 600;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  border: 2px solid lightcoral;
+  border-radius: 20px;
+  background: lightcoral;
+  width: 240px;
+  -webkit-transform: translateY(-3px);
+          transform: translateY(-3px);
+  cursor: pointer;
+  margin: 0 1rem;
+}
+.user-page .card-container .card-right .comments-container .comment-container .right-part .edit-comment span {
+  padding: 5px 9px;
+  margin-left: 5px;
+  background: lightcoral;
+  border-radius: 50px;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+  cursor: pointer;
+}
+.user-page .card-container .card-right .comments-container .comment-container .right-part .edit-comment span:hover {
+  -webkit-transform: scale(1.07);
+          transform: scale(1.07);
+}
+.user-page .card-container .card-right .comments-container .comment-container .right-part .edit-comment span img {
+  height: 16px;
+  width: 16px;
+  -webkit-transform: translateY(3px);
+          transform: translateY(3px);
+}
+.user-page .card-container .card-right .comments-container .comment-form {
+  padding: 0 0.5rem;
+}
+.user-page .card-container .card-right .comments-container .comment-form input[type=text] {
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: Manrope, sans-serif;
+  border: 1px solid #4e6dd1;
+  width: 100%;
+  max-width: 90vw;
+  padding: 10px;
+  margin: 1rem 0;
+  border-radius: 20px;
+}
+.user-page .card-container .card-right .comments-container .comment-form input[type=submit] {
+  font-family: "Manrope", sans-serif;
+  font-weight: 600;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  border: 2px solid lightcoral;
+  border-radius: 20px;
+  background: lightcoral;
+  width: 240px;
+  -webkit-transform: translateY(-3px);
+          transform: translateY(-3px);
+  cursor: pointer;
+}
+.user-page .followhandler button {
+  font-family: "Manrope", sans-serif;
+  font-weight: 600;
+  padding: 0.25rem 1rem;
+  margin-top: 0.25rem;
+  border: 2px solid lightcoral;
+  border-radius: 20px;
+  background: lightcoral;
+  -webkit-transform: translateY(-3px);
+          transform: translateY(-3px);
+  cursor: pointer;
 }
 
 .navigation {

@@ -104,7 +104,7 @@ const PostCard = ({ post }) => {
                 width="560"
                 height="315"
                 src={post.video}
-                title="YouTube video player"
+                title="MediaPlayer"
                 frameBorder="0"
                 allowFullScreen
               ></iframe>

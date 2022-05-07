@@ -69,10 +69,10 @@ const Profil = () => {
             </div>
             <div className="user-right-container">
               <div className="bio-update">
-                <p>Bio</p>
+                <p className="bio-title">Bio</p>
                 {updateForm === false && (
                   <>
-                    <p>{userData.bio}</p>
+                    <p className="bio-content">{userData.bio}</p>
                     <button onClick={() => setUpdateForm(!updateForm)}>
                       Modifier bio
                     </button>
@@ -94,23 +94,31 @@ const Profil = () => {
                   </>
                 )}
 
-                <p onClick={() => setFollowingPopup(true)}>
+                <p
+                  className="followhandlers"
+                  onClick={() => setFollowingPopup(true)}
+                >
                   Abonnements :
                   {userData.following
                     ? " " + userData.following.match(/.{1,36}/g).length
                     : " 0"}
                 </p>
-                <p onClick={() => setFollowersPopup(true)}>
+                <p
+                  className="followhandlers"
+                  onClick={() => setFollowersPopup(true)}
+                >
                   Abonnés :
                   {userData.followers
                     ? " " + userData.followers.match(/.{1,36}/g).length
                     : " 0"}
                 </p>
-                <p>Membre depuis le : {dateParser(userData.createdAt)}</p>
+                <p className="bio-date">
+                  Membre depuis le : {dateParser(userData.createdAt)}
+                </p>
                 {followingPopup && (
                   <div className="popup-profil-container">
                     <div className="modal">
-                      <p>Abonnements : </p>
+                      <p className="modal-title">Abonnements : </p>
                       <span
                         className="cross"
                         onClick={() => setFollowingPopup(false)}
@@ -153,7 +161,7 @@ const Profil = () => {
                 {followersPopup && (
                   <div className="popup-profil-container">
                     <div className="modal">
-                      <p>Abonnés : </p>
+                      <p className="modal-title">Abonnés : </p>
                       <span
                         className="cross"
                         onClick={() => setFollowersPopup(false)}

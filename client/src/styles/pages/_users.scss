@@ -38,6 +38,7 @@
         max-width: 110px;
         margin: 0 1em;
         object-fit: cover;
+        cursor: pointer;
       }
       .user-infos {
         display: flex;
@@ -53,6 +54,11 @@
           display: flex;
           font-weight: 700;
           font-size: 1.4em;
+          cursor: pointer;
+
+          &:hover {
+            color: $color-2;
+          }
         }
       }
     }

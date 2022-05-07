@@ -5,6 +5,10 @@ import FollowButton from "./FollowButton";
 const UserCard = ({ user }) => {
   const userData = useSelector((state) => state.userReducer);
 
+  const userRelocate = () => {
+    window.location.href = `/User?=${user.firstName}_${user.lastName}`;
+  };
+
   return (
     <>
       {user.id != userData.id && (
@@ -12,6 +16,7 @@ const UserCard = ({ user }) => {
           <li className="user-card" key={user.id}>
             <div className="user-desc">
               <img
+                onClick={() => userRelocate()}
                 src={user.picture}
                 alt={
                   "Photo de l'utilisateur:" +
@@ -23,7 +28,7 @@ const UserCard = ({ user }) => {
                 className="user-picture"
               />
               <div className="user-infos">
-                <p className="user-name">
+                <p onClick={() => userRelocate()} className="user-name">
                   {user.firstName} {user.lastName}
                 </p>
                 <p className="user-bio">{user.bio}</p>
