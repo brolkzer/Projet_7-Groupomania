@@ -29,7 +29,7 @@ export const addPost = (data, paramsId) => {
         `${process.env.REACT_APP_API_URL}/api/post/addPost/${paramsId}`,
         data
       )
-      .then(() => console.log("post crée"))
+      .then(() => dispatch({ type: ADD_POST, payload: "" }))
       .catch((err) => console.log(err));
   };
 };

@@ -1,5 +1,6 @@
 const Post = require("../models/Post");
 const Comment = require("../models/Comment");
+const fs = require("fs");
 
 module.exports.getPosts = async (req, res) => {
   Post.findAll({
@@ -42,6 +43,14 @@ module.exports.createPost = async (req, res) => {
 
 module.exports.deletePost = async (req, res) => {
   try {
+    const getPost = await Post.findOne({ where: { id: req.params.id } });
+    if (getPost.picture != null)
+      fs.unlink(
+        `../client/public/assets/postsUploads/${getPost.picture.split("/")[3]}`,
+        (err) => {
+          if (err) throw err;
+        }
+      );
     const postDelete = await Post.destroy({ where: { id: req.params.id } });
     postDelete;
     const commentDelete = await Comment.destroy({

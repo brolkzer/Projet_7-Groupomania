@@ -6,7 +6,7 @@ const DeletePost = ({ post }) => {
   const dispatch = useDispatch();
   const userData = useSelector((state) => state.userReducer);
 
-  const destroyPost = () => {
+  const destroyPost = async () => {
     dispatch(deletePost(post.id, post.posterId, userData.id, userData.mod));
   };
   return (
