@@ -60,7 +60,9 @@ const CardComments = ({ post }) => {
                       <FollowButton idToFollow={comment.commenterId} />
                     )}
                   </div>
-                  <span>{dateParser(comment.createdAt)}</span>
+                  <span className="comment-date">
+                    {dateParser(comment.createdAt)}
+                  </span>
                 </div>
                 <p>{comment.content}</p>
                 <EditDeleteComment comment={comment} />

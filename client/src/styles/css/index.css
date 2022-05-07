@@ -89,6 +89,18 @@ li {
   margin: 1rem 0;
   border-radius: 20px 20px 6px 20px;
 }
+.home-header .post-form #post-file-error {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 10px;
+}
 .home-header .post-form .footer-form {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -667,6 +679,10 @@ li {
       -ms-flex-align: center;
           align-items: center;
 }
+.page-profil .card-container .card-right .comments-container .comment-container .right-part .comment-header .comment-date {
+  font-weight: 300;
+  font-style: italic;
+}
 .page-profil .card-container .card-right .comments-container .comment-container .right-part .comment-header .pseudo {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -681,6 +697,8 @@ li {
 }
 .page-profil .card-container .card-right .comments-container .comment-container .right-part .comment-header .pseudo span {
   margin-right: 1rem;
+  font-size: 18px;
+  font-weight: 600;
 }
 .page-profil .card-container .card-right .comments-container .comment-container .right-part .edit-comment .edit-comment-form {
   display: -webkit-box;
@@ -1317,6 +1335,10 @@ li {
       -ms-flex-align: center;
           align-items: center;
 }
+.user-page .card-container .card-right .comments-container .comment-container .right-part .comment-header .comment-date {
+  font-weight: 300;
+  font-style: italic;
+}
 .user-page .card-container .card-right .comments-container .comment-container .right-part .comment-header .pseudo {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1331,6 +1353,8 @@ li {
 }
 .user-page .card-container .card-right .comments-container .comment-container .right-part .comment-header .pseudo span {
   margin-right: 1rem;
+  font-size: 18px;
+  font-weight: 600;
 }
 .user-page .card-container .card-right .comments-container .comment-container .right-part .edit-comment .edit-comment-form {
   display: -webkit-box;
@@ -1770,6 +1794,10 @@ li {
       -ms-flex-align: center;
           align-items: center;
 }
+.main .thread-container .card-container .card-right .comments-container .comment-container .right-part .comment-header .comment-date {
+  font-weight: 300;
+  font-style: italic;
+}
 .main .thread-container .card-container .card-right .comments-container .comment-container .right-part .comment-header .pseudo {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1784,6 +1812,8 @@ li {
 }
 .main .thread-container .card-container .card-right .comments-container .comment-container .right-part .comment-header .pseudo span {
   margin-right: 1rem;
+  font-size: 18px;
+  font-weight: 600;
 }
 .main .thread-container .card-container .card-right .comments-container .comment-container .right-part .edit-comment .edit-comment-form {
   display: -webkit-box;
@@ -1904,9 +1934,13 @@ li {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   border-radius: 45px;
   background: rgb(205, 205, 205);
-  gap: 50px;
+  gap: 10px;
   padding: 15px;
 }
 .log-page .form-container ul li {
@@ -1929,59 +1963,69 @@ li {
   cursor: pointer;
   background-color: #1a3794;
 }
-.log-page .form-container h1 {
-  font-size: 1.5em;
-  margin-bottom: 1em;
+.log-page .form-container #sign-up-form,
+.log-page .form-container #sign-in-form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  width: 20ch;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
-
-.connection-from {
-  border: 2px solid #1a3794;
-  width: 400px;
-  margin: 35px auto 0;
-  padding: 20px 0;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  text-align: center;
-}
-.connection-from h3 {
-  padding: 10px 0 15px;
-}
-.connection-from ul {
-  padding: 10px;
+.log-page .form-container #sign-up-form h1,
+.log-page .form-container #sign-in-form h1 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 20px;
+  margin-bottom: 10px;
+  max-width: 25ch;
 }
-.connection-from ul li {
+.log-page .form-container #sign-up-form label,
+.log-page .form-container #sign-in-form label {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+.log-page .form-container #sign-up-form input[type=text],
+.log-page .form-container #sign-up-form input[type=password],
+.log-page .form-container #sign-in-form input[type=text],
+.log-page .form-container #sign-in-form input[type=password] {
+  font-size: 16px;
+  font-weight: 500;
+  font-family: Manrope, sans-serif;
+  border: 1px solid #4e6dd1;
+  border-radius: 20px;
+  padding: 6px;
+}
+.log-page .form-container #sign-up-form input[type=submit],
+.log-page .form-container #sign-in-form input[type=submit] {
+  font-family: "Manrope", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 1rem;
+  padding: 6px;
+  border: 2px solid lightcoral;
+  border-radius: 20px;
   background: lightcoral;
-  color: rgb(255, 255, 255);
-  width: 130px;
-  padding: 10px 0;
-  border-radius: 18px;
+  -webkit-transform: translateY(-3px);
+          transform: translateY(-3px);
   cursor: pointer;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-  -webkit-box-shadow: 3px 3px 1px rgba(51, 51, 51, 0.418);
-          box-shadow: 3px 3px 1px rgba(51, 51, 51, 0.418);
-}
-.connection-from ul li:hover {
-  background: #1a3794;
-}
-.connection-from .active-btn {
-  background: #1a3794;
-}
-.connection-from form {
-  width: 400px;
-  margin: 10px auto 0;
-  padding: 20px;
+  margin: 1rem 1rem;
 }/*# sourceMappingURL=index.css.map */

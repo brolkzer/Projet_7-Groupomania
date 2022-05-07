@@ -402,6 +402,11 @@
               justify-content: space-between;
               align-items: center;
 
+              .comment-date {
+                font-weight: 300;
+                font-style: italic;
+              }
+
               .pseudo {
                 display: flex;
                 justify-content: space-around;
@@ -410,6 +415,8 @@
 
                 span {
                   margin-right: 1rem;
+                  font-size: 18px;
+                  font-weight: 600;
                 }
               }
             }

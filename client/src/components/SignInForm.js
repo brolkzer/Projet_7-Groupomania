@@ -50,7 +50,10 @@ const SignInForm = () => {
         type="password"
         name="password"
         id="password"
-        onChange={(e) => setPassword(e.target.value)}
+        onChange={(e) => {
+          errorId.innerHTML = "";
+          setPassword(e.target.value);
+        }}
         value={password}
       />
       <br />

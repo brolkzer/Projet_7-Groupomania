@@ -7,21 +7,20 @@ import { isEmpty } from "./Utils";
 const NewPostForm = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [message, setMessage] = useState("");
+  const [file, setFile] = useState();
   const [postPicture, setPostPicture] = useState(null);
   const [video, setVideo] = useState("");
-  const [file, setFile] = useState();
   const userData = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
 
-  const handlePicture = (e) => {
+  const handlePicture = async (e) => {
     setPostPicture(URL.createObjectURL(e.target.files[0]));
     setFile(e.target.files[0]);
+    console.log(file);
     setVideo("");
   };
-  const imgString = `./assets/postsUploads/${Date.now().toString()}${
-    userData.id
-  }.jpg`;
   const paramsId = `${Date.now().toString()}${userData.id}`;
+  const imgString = `./assets/postsUploads/${paramsId}.jpg`;
 
   const handlePost = async () => {
     if (message || postPicture || video) {
@@ -35,9 +34,14 @@ const NewPostForm = () => {
       }
       data.append("video", video);
 
-      await dispatch(addPost(data, paramsId));
-      dispatch(getPosts());
-      cancelPost();
+      if (file.size > 500000)
+        document.getElementById("post-file-error").innerHTML =
+          "Le fichier ne doit pas dépasser 200 Ko";
+      else {
+        await dispatch(addPost(data, paramsId));
+        dispatch(getPosts());
+        cancelPost();
+      }
     } else {
       alert("Veuillez remplir votre post avant de l'envoyer");
     }
@@ -48,6 +52,7 @@ const NewPostForm = () => {
     setPostPicture("");
     setVideo("");
     setFile("");
+    document.getElementById("post-file-error").innerHTML = "";
   };
 
   const handleVideo = () => {
@@ -120,6 +125,7 @@ const NewPostForm = () => {
               onChange={(e) => setMessage(e.target.value)}
               value={message}
             />
+            <p id="post-file-error"></p>
             {postPicture || video.length > 20 ? (
               <li className="card-container">
                 <div className="card-right">
@@ -151,7 +157,9 @@ const NewPostForm = () => {
                       id="file-upload"
                       name="file"
                       accept=".jpg, .jpeg, .png"
-                      onChange={(e) => handlePicture(e)}
+                      onChange={(e) => {
+                        handlePicture(e);
+                      }}
                     />
                   </>
                 )}
