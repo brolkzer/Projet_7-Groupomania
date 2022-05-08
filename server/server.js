@@ -11,7 +11,6 @@ const userRoutes = require("./routes/user.routes");
 const postRoutes = require("./routes/post.routes");
 const commentRoutes = require("./routes/comment.routes");
 const multer = require("multer");
-const upload = multer();
 
 /* Initialize DB Server */
 
@@ -54,11 +53,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/upload", userRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/post", postRoutes);
-// app.use(
-//   "/api/post/addPost",
-//   express.static(path.join(__dirname, "")),
-//   postRoutes
-// );
 app.use("/api/comment", commentRoutes);
 
 app.listen(3001, () => {

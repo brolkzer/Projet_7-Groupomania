@@ -49,7 +49,7 @@ export const uploadPicture = (data, id) => {
   return (dispatch) => {
     return axios
       .post(`${process.env.REACT_APP_API_URL}/upload/${id}`, data)
-      .then(() => dispatch({ type: UPLOAD_PICTURE, payload: { imgString } }))
+      .then(() => dispatch({ type: UPLOAD_PICTURE, payload: "" }))
       .catch((err) => console.log());
   };
 };
