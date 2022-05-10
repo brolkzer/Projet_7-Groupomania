@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { followUser, unfollowUser } from "../actions/user.actions";
 import { getUsers } from "../actions/users.action";
 import { isEmpty } from "./Utils";
-import { getPosts } from "../actions/post.actions";
 
 const FollowButton = ({ idToFollow }) => {
   const userData = useSelector((state) => state.userReducer);
@@ -13,13 +12,8 @@ const FollowButton = ({ idToFollow }) => {
   const handleFollow = () => {
     dispatch(followUser(userData.id, idToFollow))
       .then(() => {
-        dispatch(getUsers())
-          .then(() => {
-            setIsFollowed(true)
-              .then(() => dispatch(getPosts()))
-              .catch(() => console.log());
-          })
-          .catch((err) => console.log(err));
+        dispatch(getUsers());
+        setIsFollowed(true);
       })
       .catch((err) => console.log(err));
   };
@@ -27,13 +21,8 @@ const FollowButton = ({ idToFollow }) => {
   const handleUnfollow = () => {
     dispatch(unfollowUser(userData.id, idToFollow))
       .then(() => {
-        dispatch(getUsers())
-          .then(() => {
-            setIsFollowed(false)
-              .then(() => dispatch(getPosts()))
-              .catch(() => console.log());
-          })
-          .catch((err) => console.log(err));
+        dispatch(getUsers());
+        setIsFollowed(false);
       })
       .catch((err) => console.log(err));
   };

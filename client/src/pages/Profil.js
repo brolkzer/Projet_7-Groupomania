@@ -8,6 +8,8 @@ import PostCard from "../components/PostCard";
 import { dateParser, isEmpty } from "../components/Utils";
 import { getPosts } from "../actions/post.actions";
 import FollowButton from "../components/FollowButton";
+import axios from "axios";
+import Cookies from "js-cookie";
 
 const Profil = () => {
   const userData = useSelector((state) => state.userReducer);
@@ -46,6 +48,16 @@ const Profil = () => {
   const handleUpdate = () => {
     dispatch(updateBio(userData.id, bio));
     setUpdateForm(false);
+  };
+
+  const deleteUser = async () => {
+    await axios({
+      method: "delete",
+      url: `${process.env.REACT_APP_API_URL}/api/user/delete-account/${userData.id}`,
+    });
+  };
+  const removeCookie = (key) => {
+    Cookies.remove(key);
   };
 
   return (
@@ -114,6 +126,25 @@ const Profil = () => {
                 </p>
                 <p className="bio-date">
                   Membre depuis le : {dateParser(userData.createdAt)}
+                </p>
+                <p
+                  className="delete-account"
+                  onClick={() => {
+                    if (
+                      window.confirm(
+                        "Voulez vous vraiment supprimer votre compte ? "
+                      )
+                    ) {
+                      deleteUser()
+                        .then(() => {
+                          removeCookie("jwt");
+                          window.location = "/";
+                        })
+                        .catch((err) => console.log(err));
+                    }
+                  }}
+                >
+                  Supprimer mon compte
                 </p>
                 {followingPopup && (
                   <div className="popup-profil-container">

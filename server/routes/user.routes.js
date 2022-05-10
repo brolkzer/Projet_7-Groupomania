@@ -13,5 +13,6 @@ router.patch("/bio/:id", userController.updateBio);
 router.post("/sign-up", userController.signUp);
 router.post("/sign-in", userController.signIn);
 router.post("/:id", multer, uploadController.uploadProfil);
+router.delete("/delete-account/:id", userController.deleteAccount);
 
 module.exports = router;

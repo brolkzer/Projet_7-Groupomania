@@ -61,7 +61,7 @@ export const updateBio = (id, bio) => {
       url: `${process.env.REACT_APP_API_URL}/api/user/bio/${id}`,
       data: { bio },
     })
-      .then((res) => {
+      .then(() => {
         dispatch({ type: UPDATE_BIO, payload: bio });
       })
       .catch((err) => console.log(err));

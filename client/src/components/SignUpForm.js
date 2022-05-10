@@ -58,15 +58,8 @@ const SignUpForm = () => {
           password,
         },
       })
-        .then((res) => {
-          if (res.data.errors) {
-            firstNameError.innerHTML = res.data.errors.firstName;
-            lastNameError.innerHTML = res.data.errors.lastName;
-            emailError.innerHTML = res.data.errors.email;
-            passwordError.innerHTML = res.data.errors.password;
-          } else {
-            window.location = "/Log";
-          }
+        .then(() => {
+          window.location = "/Log";
         })
         .catch((err) => console.log(err));
     }
@@ -82,7 +75,6 @@ const SignUpForm = () => {
           name="firstName"
           id="firstName"
           onChange={(e) => {
-            firstNameError.innerHTML = "";
             setFirstName(e.target.value);
           }}
           value={firstName}
@@ -95,7 +87,6 @@ const SignUpForm = () => {
           name="lastName"
           id="lastName"
           onChange={(e) => {
-            lastNameError.innerHTML = "";
             setLastName(e.target.value);
           }}
           value={lastName}
@@ -108,7 +99,6 @@ const SignUpForm = () => {
           name="email"
           id="email"
           onChange={(e) => {
-            emailError.innerHTML = "";
             setEmail(e.target.value);
           }}
           value={email}
@@ -121,8 +111,6 @@ const SignUpForm = () => {
           name="password"
           id="password"
           onChange={(e) => {
-            passwordError.innerHTML = "";
-            passwordConfirmError.innerHTML = "";
             setPassword(e.target.value);
           }}
           value={password}
@@ -135,8 +123,6 @@ const SignUpForm = () => {
           name="password"
           id="password-confirm"
           onChange={(e) => {
-            passwordError.innerHTML = "";
-            passwordConfirmError.innerHTML = "";
             setControlPassword(e.target.value);
           }}
           value={controlPassword}

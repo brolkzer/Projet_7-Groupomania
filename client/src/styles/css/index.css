@@ -377,6 +377,33 @@ li {
   margin: 1rem 0;
   border-radius: 20px 20px 6px 20px;
 }
+.page-profil .user-desc .user-global-container .user-right-container .bio-update .delete-account {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: "Manrope", sans-serif;
+  font-weight: 600;
+  color: rgb(255, 255, 255);
+  margin: 1rem 0;
+  padding: 0.5rem 1rem;
+  border: 2px solid rgb(150, 0, 0);
+  border-radius: 20px;
+  background: rgb(150, 0, 0);
+  -webkit-transform: translateY(-3px);
+          transform: translateY(-3px);
+  cursor: pointer;
+}
+@media screen and (max-width: 230px) {
+  .page-profil .user-desc .user-global-container .user-right-container .bio-update .delete-account {
+    max-width: 100px;
+  }
+}
 .page-profil .user-desc .user-global-container .user-right-container .popup-profil-container .modal {
   max-height: 60vh;
   display: -webkit-box;
@@ -626,13 +653,7 @@ li {
 }
 @media screen and (max-width: 675px) {
   .page-profil .card-container .card-right .card-header .sign-date {
-    max-width: 70%;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    word-wrap: break-word;
+    display: none;
   }
 }
 .page-profil .card-container .card-right .card-header .pseudo {

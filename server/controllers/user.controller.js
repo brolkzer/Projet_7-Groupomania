@@ -1,4 +1,6 @@
 const User = require("../models/User");
+const Post = require("../models/Post");
+const Comment = require("../models/Comment");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
@@ -47,8 +49,7 @@ module.exports.signIn = async (req, res) => {
                 userId: user[0].id,
                 token: jwt.sign(
                   { data: user[0].id },
-                  `${process.env.JWT_TOKEN}`,
-                  { expiresIn: "24h" }
+                  `${process.env.JWT_TOKEN}`
                 ),
               });
             }
@@ -176,5 +177,80 @@ module.exports.updateBio = async (req, res) => {
     console.log(
       "Erreur lors de la tentative de modification de votre bio" + err
     );
+  }
+};
+
+module.exports.deleteAccount = async (req, res) => {
+  const isEmpty = (value) => {
+    return (
+      value === undefined ||
+      value === null ||
+      (typeof value === "object" && Object.keys(value).length === 0) ||
+      (typeof value === "string" && value.trim().length === 0)
+    );
+  };
+
+  try {
+    const getUsers = await User.findAll()
+      .then((users) => {
+        users.forEach((user) => {
+          if (!isEmpty(user.followers)) {
+            const followersArray = user.dataValues.followers.match(/.{1,36}/g);
+            const filteredAray = followersArray.filter(
+              (idFilter) => idFilter != req.params.id
+            );
+            const followersString = filteredAray.join("");
+            const updateUsersFollowers = User.findOne({
+              where: { id: user.dataValues.id },
+            }).then((eachUser) => {
+              eachUser.followers = followersString;
+              eachUser.save();
+            });
+          }
+        });
+      })
+      .catch((err) => console.log(err));
+
+    const getPosts = await Post.findAll()
+      .then((posts) => {
+        posts.forEach((post) => {
+          if (!isEmpty(post.likes)) {
+            const likesArray = post.dataValues.likes.match(/.{1,36}/g);
+            const filteredArray = likesArray.filter(
+              (idFilter) => idFilter != req.params.id
+            );
+            const likesString = filteredArray.join("");
+            const updatePostsLikes = Post.findOne({
+              where: { id: post.dataValues.id },
+            }).then((eachPost) => {
+              eachPost.likes = likesString;
+              eachPost.save();
+            });
+          }
+
+          if (post.posterId === req.params.id) {
+            Comment.destroy({
+              where: { postId: post.id },
+            })
+              .then(() => console.log("Z"))
+              .catch((err) => console.log(err));
+          }
+        });
+      })
+      .catch((err) => console.log(err));
+
+    const userDelete = await User.destroy({ where: { id: req.params.id } });
+    const userPostsDelete = await Post.destroy({
+      where: { posterId: req.params.id },
+    });
+    const userCommentsDelete = await Comment.destroy({
+      where: { commenterId: req.params.id },
+    });
+
+    return res.status(200).json();
+  } catch (err) {
+    return res
+      .status(500)
+      .json("erreur lors de la tentative de suppression du compte" + " " + err);
   }
 };

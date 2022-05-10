@@ -36,7 +36,7 @@ const NewPostForm = () => {
 
       if (file && file.size > 500000)
         document.getElementById("post-file-error").innerHTML =
-          "Le fichier ne doit pas dépasser 200 Ko";
+          "Le fichier ne doit pas dépasser 500 Ko";
       else {
         await dispatch(addPost(data, paramsId));
         dispatch(getPosts());

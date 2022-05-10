@@ -28,12 +28,15 @@ const App = () => {
         .then((res) => {
           setUid(res.data.userId.data);
         })
-        .catch(() => console.log("no token"));
+        .catch(() => {
+          setUid("");
+          console.log("no token");
+        });
     };
     fetchToken();
 
     if (uid) dispatch(getUser(uid));
-  }, [uid]);
+  }, [uid, dispatch]);
 
   return (
     <UidContext.Provider value={uid}>
