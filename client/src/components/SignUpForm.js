@@ -19,7 +19,7 @@ const SignUpForm = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
 
-    if (!email.match(/^[\w_-]+@[\w-]+\.[a-z]{2,4}$/i)) {
+    if (!email.match(/^[\w%\+\-]+(\.[\w%\+\-]+)*@[\w%\+\-]+(\.[\w%\+\-]+)+$/)) {
       emailError.innerHTML = "Veuillez renseigner une adresse email valide";
     } else if (
       (firstName.length > 0 && firstName.length < 3) ||
