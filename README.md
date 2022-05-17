@@ -13,17 +13,19 @@ Ouvrir un terminal à la racine du projet, se positionner sur le dosser [client]
 puis lancer le script `npm install`.
 
 Ouvrir un nouveau terminal à la racine du projet, se positionner sur le dossier [server] avec la commande `cd server`,
-puis lancer le script `npm install`
+puis lancer le script `npm install`.
 
 ## - Démarrer le front-end
 
 Ouvrir un terminal à la racine du dossier, se positionner sur le dossier [client] avec la commande `cd client`,
-puis lancer le script `npm start`
+puis lancer le script `npm start`.
 
 ## - Démarrer le back-end
 
 Ouvrir un terminal à la racine du dossier, se positionner sur le dosser [server] avec la commande `cd server`,
-puis lancer le script `npm run dev`
+puis lancer le script `npm run dev`.
+
+Cela dit la BDD ne sera pas importée, il faut créer sa propre DB SQL, la nommer `Groupomania`, ou comme vous le souhaitez ( dans ce cas il faut modifier la variable d'environnement back-end ), et ensuite créer vos propres utilisateurs, vos posts, vos commentaires.
 
 ### - Créer les variables d'environnements front et back
 
