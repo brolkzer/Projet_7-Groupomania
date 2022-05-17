@@ -145,6 +145,27 @@ li {
   cursor: pointer;
 }
 
+.card-container {
+  max-width: 80vw;
+}
+@media screen and (max-width: 500px) {
+  .card-container .card-right .post-pic,
+.card-container .card-right iframe {
+    width: 85vw !important;
+  }
+}
+@media screen and (max-width: 400px) {
+  .card-container .card-right .post-pic,
+.card-container .card-right iframe {
+    width: 75vw !important;
+  }
+}
+@media screen and (max-width: 250px) {
+  .card-container .card-right .post-pic,
+.card-container .card-right iframe {
+    width: 60vw !important;
+  }
+}
 .card-container .card-right .content {
   display: -webkit-box;
   display: -ms-flexbox;

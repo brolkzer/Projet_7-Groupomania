@@ -92,7 +92,20 @@
   }
 }
 .card-container {
+  max-width: 80vw;
   .card-right {
+    .post-pic,
+    iframe {
+      @media screen and(max-width: 500px) {
+        width: 85vw !important;
+      }
+      @media screen and(max-width: 400px) {
+        width: 75vw !important;
+      }
+      @media screen and(max-width: 250px) {
+        width: 60vw !important;
+      }
+    }
     .content {
       @include verticalCenter;
       min-height: 200px;
